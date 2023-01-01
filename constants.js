@@ -12,6 +12,7 @@ module.exports = {
         GROUP_LEAVE: `User left.`,
         GROUP_UPDATE: `Group updated`,
         CHANGE_STATE: `CHANGE STATE`,
-        MESSAGE_RECEIVED: `MESSAGE RECEIVED`
+        MESSAGE_RECEIVED: `MESSAGE RECEIVED`,
+        DEFAULT_GROUP_TITLE: `🍞🛢️ Pão em Lata`
     }
 }
