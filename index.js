@@ -79,10 +79,10 @@ client.on('message', async msg => {
     if(!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
     switch (msg.body) {
-        case `${COMMAND_SYMBOL}teste`:
+        case `${consts.COMMAND_SYMBOL}teste`:
             teste(msg);
             break;
-        case `${COMMAND_SYMBOL}nomepadrao`:
+        case `${consts.COMMAND_SYMBOL}nomepadrao`:
             nomepadrao(msg, consts.DEFAULT_GROUP_TITLE);
             break;
 
