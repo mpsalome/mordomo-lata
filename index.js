@@ -4,6 +4,7 @@ const { consts } = require(`./constants`);
 
 //actions on msg received
 const { teste } = require(`./actions/teste`);
+const { nomepadrao } = require(`./actions/nomepadrao`);
 
 client.initialize();
 
@@ -81,7 +82,10 @@ client.on('message', async msg => {
         case `${COMMAND_SYMBOL}teste`:
             teste(msg);
             break;
-       
+        case `${COMMAND_SYMBOL}nomepadrao`:
+            nomepadrao(msg, consts.DEFAULT_GROUP_TITLE);
+            break;
+
         default:
             break;
     }
