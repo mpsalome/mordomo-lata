@@ -2,6 +2,9 @@ const { Client } = require('whatsapp-web.js');
 const client = new Client();
 const { consts } = require(`./constants`);
 
+//actions on msg received
+const { teste } = require(`./actions/teste`);
+
 client.initialize();
 
 client.on('call', async (call) => {
@@ -72,9 +75,14 @@ client.on('change_state', state => {
 
 client.on('message', async msg => {
     console.log(consts.MESSAGE_RECEIVED, msg);
-    if (msg.body === '!ping reply') {
-        // Send a new message as a reply to the current one
-        msg.reply('pong');
+    if(!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
+    switch (msg.body) {
+        case `${COMMAND_SYMBOL}teste`:
+            teste(msg);
+            break;
+       
+        default:
+            break;
     }
 });
