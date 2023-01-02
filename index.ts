@@ -1,10 +1,10 @@
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
-const { consts } = require(`./constants`);
+import consts from './constants';
 
 //actions on msg received
-const { teste } = require(`./actions/teste`);
-const { nomepadrao } = require(`./actions/nomepadrao`);
+import { teste } from './actions/teste';
+import { nomepadrao } from './actions/nomepadrao';
 
 client.initialize();
 
