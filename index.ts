@@ -1,7 +1,7 @@
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
 import consts from './constants';
-import qrcode from 'qrcode-terminal';
+const qrcode = require('qrcode-terminal');
 
 //actions on msg received
 import { teste } from './actions/teste';
@@ -9,7 +9,7 @@ import { nomepadrao } from './actions/nomepadrao';
 
 client.initialize();
 
-client.on('call', async (call) => {
+client.on('call', async (call: any) => {
   console.log('Call received, rejecting. GOTO Line 261 to disable', call);
   if (consts.REJECT_CALLS) await call.reject();
   await client.sendMessage(
@@ -26,11 +26,11 @@ client.on('call', async (call) => {
   );
 });
 
-client.on('loading_screen', (percent, message) => {
+client.on('loading_screen', (percent: any, message: any) => {
   console.log(consts.LOADING_SCREEN, percent, message);
 });
 
-client.on('qr', (qr) => {
+client.on('qr', (qr: any) => {
   qrcode.generate(qr, { small: true });
 });
 
@@ -38,7 +38,7 @@ client.on('authenticated', () => {
   console.log(consts.AUTHENTICATED);
 });
 
-client.on('auth_failure', (msg) => {
+client.on('auth_failure', (msg: any) => {
   console.error(consts.AUTH_FAILURE, msg);
 });
 
@@ -46,18 +46,18 @@ client.on('ready', () => {
   console.log(consts.READY);
 });
 
-client.on('disconnected', (reason) => {
+client.on('disconnected', (reason: any) => {
   console.log(consts.DISCONNECTED, reason);
 });
 
-client.on('message_create', (msg) => {
+client.on('message_create', (msg: any) => {
   // Fired on all message creations, including your own
   if (msg.fromMe) {
     // do stuff here
   }
 });
 
-client.on('message_revoke_everyone', async (after, before) => {
+client.on('message_revoke_everyone', async (after: any, before: any) => {
   // Fired whenever a message is deleted by anyone (including you)
   console.log(after); // message after it was deleted.
   if (before) {
@@ -65,28 +65,28 @@ client.on('message_revoke_everyone', async (after, before) => {
   }
 });
 
-client.on('group_join', (notification) => {
+client.on('group_join', (notification: any) => {
   // User has joined or been added to the group.
   console.log('join', notification);
   notification.reply(consts.GROUP_JOIN);
 });
 
-client.on('group_leave', (notification) => {
+client.on('group_leave', (notification: any) => {
   // User has left or been kicked from the group.
   console.log('leave', notification);
   notification.reply(consts.GROUP_LEAVE);
 });
 
-client.on('group_update', (notification) => {
+client.on('group_update', (notification: any) => {
   // Group picture, subject or description has been updated.
   console.log(consts.GROUP_UPDATE, notification);
 });
 
-client.on('change_state', (state) => {
+client.on('change_state', (state: any) => {
   console.log(consts.CHANGE_STATE, state);
 });
 
-client.on('message', async (msg) => {
+client.on('message', async (msg: any) => {
   console.log(consts.MESSAGE_RECEIVED, msg);
   if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
