@@ -1,6 +1,7 @@
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
 import consts from './constants';
+import qrcode from 'qrcode-terminal';
 
 //actions on msg received
 import { teste } from './actions/teste';
@@ -19,7 +20,7 @@ client.on('loading_screen', (percent, message) => {
 });
 
 client.on('qr', (qr) => {
-    console.log(consts.QR, qr);
+    qrcode.generate(qr, {small: true});
 });
 
 client.on('authenticated', () => {
