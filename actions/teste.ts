@@ -1,4 +1,4 @@
-export const teste = (msg)=> {
+export const teste = (msg: any)=> {
     msg.reply('testado');
     return;
 }
