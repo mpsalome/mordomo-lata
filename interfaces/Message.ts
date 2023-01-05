@@ -1,6 +1,13 @@
 import MessageTypes from "./MessageTypes";
 import MessageAck from "./MessageAck";
 import Location from "./Location";
+import MessageMedia from "./MessageMedia"
+import Chat from "./Chat"
+import Contact from "./Contact";
+import MessageInfo from "./MessageInfo";
+import MessageSendOptions from "./MessageSendOptions";
+import Order from "./Order";
+
 
 export default interface Message {
     ack: MessageAck,
@@ -31,5 +38,21 @@ export default interface Message {
     to:  string,
     token:  string,
     type:  MessageTypes,
-    vCards: string[]
+    vCards: string[],
+    acceptGroupV4Invite(): Promise<object>,
+    delete(everyone: boolean): void, 
+    downloadMedia(): Promise<MessageMedia>,
+    forward(chat:  string | Chat): Promise<object>,
+    getChat(): Promise<Chat>,
+    getContact(): Promise<Contact>,
+    getInfo(): Promise<MessageInfo>,
+    getMentions(): Promise<Contact>,
+    getOrder(): Promise<Order>,
+    getPayment(): Promise<any>,
+    getQuotedMessage(): Promise<Message>,
+    react(reaction:string): Promise<object>,
+    reload(): Promise<Message>,
+    reply(content: string | MessageMedia | Location, chatId?: string, options?: MessageSendOptions): Promise<Message>,
+    star(): void,
+    unstar(): void,
 }
