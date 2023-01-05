@@ -1,11 +1,12 @@
 const { Client } = require('whatsapp-web.js');
-const client = new Client({
+const raspberryArgs = {
   puppeteer: {
     executablePath: '/usr/bin/chromium-browser',
     headless: true,
     args: ['--no-sandbox'],
   }
-});
+};
+const client = new Client(process.argv[2] ? raspberryArgs : {});
 import consts from './constants';
 const qrcode = require('qrcode-terminal');
 
