@@ -14,7 +14,7 @@ import { teste } from './actions/teste';
 import { nomepadrao } from './actions/nomepadrao';
 
 //interfaces imports
-import Message from './interfaces/Message';
+import { Message } from 'whatsapp-web.js'; 
 
 client.initialize();
 
@@ -35,11 +35,11 @@ client.on('call', async (call: any) => {
   );
 });
 
-client.on('loading_screen', (percent: any, message: any) => {
+client.on('loading_screen', (percent: string, message: string) => {
   console.log(consts.LOADING_SCREEN, percent, message);
 });
 
-client.on('qr', (qr: any) => {
+client.on('qr', (qr: string) => {
   qrcode.generate(qr, { small: true });
 });
 
