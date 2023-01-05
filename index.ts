@@ -13,6 +13,9 @@ const qrcode = require('qrcode-terminal');
 import { teste } from './actions/teste';
 import { nomepadrao } from './actions/nomepadrao';
 
+//interfaces imports
+import Message from './interfaces/Message';
+
 client.initialize();
 
 client.on('call', async (call: any) => {
@@ -44,7 +47,7 @@ client.on('authenticated', () => {
   console.log(consts.AUTHENTICATED);
 });
 
-client.on('auth_failure', (msg: any) => {
+client.on('auth_failure', (msg: Message) => {
   console.error(consts.AUTH_FAILURE, msg);
 });
 
@@ -56,7 +59,7 @@ client.on('disconnected', (reason: any) => {
   console.log(consts.DISCONNECTED, reason);
 });
 
-client.on('message_create', (msg: any) => {
+client.on('message_create', (msg: Message) => {
   // Fired on all message creations, including your own
   if (msg.fromMe) {
     // do stuff here
@@ -92,7 +95,7 @@ client.on('change_state', (state: any) => {
   console.log(consts.CHANGE_STATE, state);
 });
 
-client.on('message', async (msg: any) => {
+client.on('message', async (msg: Message) => {
   console.log(consts.MESSAGE_RECEIVED, msg);
   if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
