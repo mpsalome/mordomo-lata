@@ -1,5 +1,9 @@
 const { Client } = require('whatsapp-web.js');
-const client = new Client();
+const client = new Client({
+  puppeteer: {
+    args: ['--no-sandbox'],
+  }
+});
 import consts from './constants';
 const qrcode = require('qrcode-terminal');
 
