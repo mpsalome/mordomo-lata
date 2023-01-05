@@ -1,6 +1,7 @@
 const { Client } = require('whatsapp-web.js');
 const client = new Client({
   puppeteer: {
+    executablePath: '/usr/bin/chromium-browser',
     headless: true,
     args: ['--no-sandbox'],
   }
