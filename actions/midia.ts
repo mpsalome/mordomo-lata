@@ -10,10 +10,10 @@ export const audio = async (msg: Message, requestedAudio: string) => {
   if(requestedAudio==="lista") {
     if (msg.hasQuotedMsg) {
       let quotedMsg = await msg.getQuotedMessage();
-      quotedMsg.reply(`*Lista de midias:*\n${consts.COMMAND_SYMBOL}midia acaba\n${consts.COMMAND_SYMBOL}midia acompanha-o-grupo\n${consts.COMMAND_SYMBOL}midia antigona\n${consts.COMMAND_SYMBOL}midia armadinho\n${consts.COMMAND_SYMBOL}midia ban\n${consts.COMMAND_SYMBOL}midia boca-de-leite\n${consts.COMMAND_SYMBOL}midia bola-rindo\n${consts.COMMAND_SYMBOL}midia de-novo\n${consts.COMMAND_SYMBOL}midia fogos\n${consts.COMMAND_SYMBOL}midia fora-do-brasil\n${consts.COMMAND_SYMBOL}midia linda-de-bonita\n${consts.COMMAND_SYMBOL}midia outra-vez\n${consts.COMMAND_SYMBOL}midia pao-em-lata-ost\n${consts.COMMAND_SYMBOL}midia pintou-notificacao-rony\n${consts.COMMAND_SYMBOL}midia ratinho-estourado\n${consts.COMMAND_SYMBOL}midia fnx\n${consts.COMMAND_SYMBOL}midia evita\n\n${consts.COMMAND_SYMBOL}midia bom-de-leite`);
+      quotedMsg.reply(`${consts.MIDIAS}`);
       return;
     }
-    msg.reply(`*Lista de midias:*\n${consts.COMMAND_SYMBOL}midia acaba\n${consts.COMMAND_SYMBOL}midia acompanha-o-grupo\n${consts.COMMAND_SYMBOL}midia antigona\n${consts.COMMAND_SYMBOL}midia armadinho\n${consts.COMMAND_SYMBOL}midia ban\n${consts.COMMAND_SYMBOL}midia boca-de-leite\n${consts.COMMAND_SYMBOL}midia bola-rindo\n${consts.COMMAND_SYMBOL}midia de-novo\n${consts.COMMAND_SYMBOL}midia fogos\n${consts.COMMAND_SYMBOL}midia fora-do-brasil\n${consts.COMMAND_SYMBOL}midia linda-de-bonita\n${consts.COMMAND_SYMBOL}midia outra-vez\n${consts.COMMAND_SYMBOL}midia pao-em-lata-ost\n${consts.COMMAND_SYMBOL}midia pintou-notificacao-rony\n${consts.COMMAND_SYMBOL}midia ratinho-estourado\n${consts.COMMAND_SYMBOL}midia fnx\n${consts.COMMAND_SYMBOL}midia evita\n\n${consts.COMMAND_SYMBOL}midia bom-de-leite`);
+    msg.reply(`${consts.MIDIAS}`);
     return;
   }
   switch (requestedAudio) {
