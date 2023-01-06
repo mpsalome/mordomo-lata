@@ -14,6 +14,7 @@ const qrcode = require('qrcode-terminal');
 import { teste } from './actions/teste';
 import { nomepadrao } from './actions/nomepadrao';
 import { all } from './actions/all';
+import { audio } from './actions/audio';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -101,6 +102,12 @@ client.on('message', async (msg: Message) => {
   console.log(consts.MESSAGE_RECEIVED, msg);
   if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
+  //used commands that have parameters
+  if(msg.body.startsWith(`!audio`)){
+    let requestedAudio = msg.body.split(` `)[1];
+    audio(msg, requestedAudio);
+  }
+  
   switch (msg.body) {
     case `${consts.COMMAND_SYMBOL}teste`:
       teste(msg);
