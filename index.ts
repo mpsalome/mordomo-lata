@@ -14,6 +14,7 @@ const qrcode = require('qrcode-terminal');
 import { teste } from './actions/teste';
 import { nomepadrao } from './actions/nomepadrao';
 import { all } from './actions/all';
+import { para } from './actions/para';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -110,6 +111,9 @@ client.on('message', async (msg: Message) => {
       break;
     case `${consts.COMMAND_SYMBOL}all`:
       all(msg);
+      break;
+    case `${consts.COMMAND_SYMBOL}para`:
+      para(msg);
       break;
 
     default:
