@@ -1,16 +1,19 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
+import consts from '../constants';
 const path = require("path");
 const audioPath = path.resolve("./resources/audios");
+const videoPath = path.resolve("./resources/videos");
+
 
 export const audio = async (msg: Message, requestedAudio: string) => {
   let emptyMessageMedia: MessageMedia = new MessageMedia(``, ``, ``);
   if(requestedAudio==="lista") {
     if (msg.hasQuotedMsg) {
       let quotedMsg = await msg.getQuotedMessage();
-      quotedMsg.reply(`*Lista de áudios:*\n!audio acaba\n!audio acompanha-o-grupo\n!audio antigona\n!audio armadinho\n!audio ban\n!audio boca-de-leite\n!audio bola-rindo\n!audio de-novo\n!audio fogos\n!audio fora-do-brasil\n!audio linda-de-bonita\n!audio outra-vez\n!audio pao-em-lata-ost\n!audio pintou-notificacao-rony\n!audio ratinho-estourado`);
+      quotedMsg.reply(`${consts.MIDIAS}`);
       return;
     }
-    msg.reply(`*Lista de áudios:*\n!audio acaba\n!audio acompanha-o-grupo\n!audio antigona\n!audio armadinho\n!audio ban\n!audio boca-de-leite\n!audio bola-rindo\n!audio de-novo\n!audio fogos\n!audio fora-do-brasil\n!audio linda-de-bonita\n!audio outra-vez\n!audio pao-em-lata-ost\n!audio pintou-notificacao-rony\n!audio ratinho-estourado`);
+    msg.reply(`${consts.MIDIAS}`);
     return;
   }
   switch (requestedAudio) {
@@ -58,12 +61,25 @@ export const audio = async (msg: Message, requestedAudio: string) => {
       break;
     case `ratinho-estourado`:
       emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}\\ratinho-estourado.mpeg`)
+      break;
+    case `fnx`:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}\\fnx.mp4`)
+      break;
+    case `evita`:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}\\evita.mpeg`)
+      break;
+    case `bom-de-leite`:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}\\bom-de-leite.mpeg`)
+      break;
+    case `cala-boca`:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}\\cala-boca.mpeg`)
+      break;
     default:
       emptyMessageMedia.data = '';
       break;
   }
   if ( emptyMessageMedia.data === '') {
-    msg.reply('Áudio não encontrado') 
+    msg.reply('Midia não encontrada') 
     return;
   }
   if (msg.hasQuotedMsg) {
