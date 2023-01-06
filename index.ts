@@ -14,7 +14,7 @@ const qrcode = require('qrcode-terminal');
 import { teste } from './actions/teste';
 import { nomepadrao } from './actions/nomepadrao';
 import { all } from './actions/all';
-import { audio } from './actions/audio';
+import { audio } from './actions/midia';
 import { para } from './actions/para';
 
 //interfaces imports
@@ -104,7 +104,7 @@ client.on('message', async (msg: Message) => {
   if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
   //used commands that have parameters
-  if(msg.body.startsWith(`!audio`)){
+  if(msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)){
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
   }
