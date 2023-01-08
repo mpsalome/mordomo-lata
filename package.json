@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./index.ts true",
-    "dev":  "ts-node ./index.ts"
+    "dev": "ts-node ./index.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
     "qrcode-terminal": "^0.12.0",
+    "sqlite3": "^5.1.4",
     "ts-node": "^10.9.1",
     "whatsapp-web.js": "^1.18.4"
   },
@@ -32,5 +33,5 @@
     "eslint-plugin-promise": "^6.1.1",
     "typescript": "^4.9.4"
   },
-  "type": "module node --experimental-specifier-resolution=node --loader ts-node/esm ./index.ts" 
+  "type": "module node --experimental-specifier-resolution=node --loader ts-node/esm ./index.ts"
 }
