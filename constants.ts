@@ -13,6 +13,33 @@ export default {
   CHANGE_STATE: 'CHANGE STATE',
   MESSAGE_RECEIVED: 'MESSAGE RECEIVED',
   DEFAULT_GROUP_TITLE: '🍞🛢️ Pão em Lata',
-  MIDIAS: `*Lista de midias:*\n\n*Áudios:*\nmidia acaba\nmidia acompanha-o-grupo\nmidia antigona\nmidia armadinho\nmidia ban\nmidia boca-de-leite\nmidia bola-rindo\nmidia de-novo\nmidia fogos\nmidia fora-do-brasil\nmidia linda-de-bonita\nmidia outra-vez\nmidia pao-em-lata-ost\nmidia pintou-notificacao-rony\nmidia ratinho-estourado\nmidia evita\nmidia bom-de-leite\nmidia mim-de\nmidia nossa-veio\nmidia cala-boca\n\n*Vídeos:*\nmidia fnx`,
-  COMANDOS:`*Lista de comandos:*\nall\nmidia,midia lista\npara\nnomepadrao\nteste`
+  COMANDOS:`*Lista de comandos:*\nall\nmidia,midia lista\npara\nnomepadrao\nteste`,
+  ARRAY_AUDIOS: [
+    'acaba',
+    `acompanha-o-grupo`,
+    `antigona`,
+    `armadinho`,
+    `ban`,
+    `boca-de-leite`,
+    `bola-rindo`,
+    `de-novo`,
+    `fogos`,
+    `fora-do-brasil`,
+    `linda-de-bonita`,
+    `outra-vez`,
+    `pao-em-lata-ost`,
+    `pintou-notificacao-rony`,
+    `ratinho-estourado`,
+    `evita`,
+    `bom-de-leite`,
+    `cala-boca`,
+    `nossa-veio`,
+    `mim-de`,
+  ],
+  ARRAY_VIDEOS: [
+    `fnx`,
+  ],
+  MIDIAS: (audios: Array<String>, videos: Array<String>) => (
+    `*Lista de midias:*\n\n*Áudios:*\n${audios.map(audio => `midia ${audio}`).join('\n')}\n\n*Vídeos:* \n${videos.map(audio => `midia ${audio}`).join('\n')}`
+  )
 };
