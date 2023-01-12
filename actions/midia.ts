@@ -10,75 +10,75 @@ export const audio = async (msg: Message, requestedAudio: string) => {
   if(requestedAudio==="lista") {
     if (msg.hasQuotedMsg) {
       let quotedMsg = await msg.getQuotedMessage();
-      quotedMsg.reply(`${consts.MIDIAS}`);
+      quotedMsg.reply(consts.MIDIAS(consts.ARRAY_AUDIOS, consts.ARRAY_VIDEOS));
       return;
     }
-    msg.reply(`${consts.MIDIAS}`);
+    msg.reply(consts.MIDIAS(consts.ARRAY_AUDIOS, consts.ARRAY_VIDEOS));
     return;
   }
   switch (requestedAudio) {
-    case 'acaba':
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/acaba.mpeg`)
+    case consts.ARRAY_AUDIOS[0]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[0]}.mpeg`)
       break;
-    case `acompanha-o-grupo`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/acompanha-o-grupo.mpeg`)
+    case consts.ARRAY_AUDIOS[1]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[1]}.mpeg`)
       break;
-    case `antigona`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/antigona.mpeg`)
+    case consts.ARRAY_AUDIOS[2]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[2]}.mpeg`)
       break;
-    case `armadinho`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/armadinho.mpeg`)
+    case consts.ARRAY_AUDIOS[3]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[3]}.mpeg`)
       break;
-    case `ban`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/ban.mpeg`)
+    case consts.ARRAY_AUDIOS[4]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[4]}.mpeg`)
       break;
-    case `boca-de-leite`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/boca-de-leite.mpeg`)
+    case consts.ARRAY_AUDIOS[5]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[5]}.mpeg`)
       break;
-    case `bola-rindo`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/bola-rindo.mpeg`)
+    case consts.ARRAY_AUDIOS[6]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[6]}.mpeg`)
       break;
-    case `de-novo`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/de-novo.mpeg`)
+    case consts.ARRAY_AUDIOS[7]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[7]}.mpeg`)
       break;
-    case `fogos`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/fogos.mpeg`)
+    case consts.ARRAY_AUDIOS[8]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[8]}.mpeg`)
       break;
-    case `fora-do-brasil`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/fora-do-brasil.mpeg`)
+    case consts.ARRAY_AUDIOS[9]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[9]}.mpeg`)
       break;
-    case `linda-de-bonita`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/linda-de-bonita.mpeg`)
+    case consts.ARRAY_AUDIOS[10]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[10]}.mpeg`)
       break;
-    case `outra-vez`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/outra-vez.mpeg`)
+    case consts.ARRAY_AUDIOS[11]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[11]}.mpeg`)
       break;
-    case `pao-em-lata-ost`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/pao-em-lata-ost.mpeg`)
+    case consts.ARRAY_AUDIOS[12]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[12]}.mpeg`)
       break;
-    case `pintou-notificacao-rony`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/pintou-notificacao-rony.mpeg`)
+    case consts.ARRAY_AUDIOS[13]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[13]}.mpeg`)
       break;
-    case `ratinho-estourado`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/ratinho-estourado.mpeg`)
+    case consts.ARRAY_AUDIOS[14]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[14]}.mpeg`)
       break;
-    case `fnx`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/fnx.mp4`)
+    case consts.ARRAY_AUDIOS[15]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[15]}.mpeg`)
       break;
-    case `evita`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/evita.mpeg`)
+    case consts.ARRAY_AUDIOS[16]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[16]}.mpeg`)
       break;
-    case `bom-de-leite`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/bom-de-leite.mpeg`)
+    case consts.ARRAY_AUDIOS[17]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[17]}.mpeg`)
       break;
-    case `cala-boca`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/cala-boca.mpeg`)
+    case consts.ARRAY_AUDIOS[18]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[18]}.mpeg`)
       break;
-    case `nossa-veio`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/nossa-veio.mpeg`)
+    case consts.ARRAY_AUDIOS[19]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[19]}.mpeg`)
       break;
-    case `mim-de`:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/mim-de.mpeg`)
+    case consts.ARRAY_VIDEOS[0]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_VIDEOS[0]}.mpeg`)
       break;
     default:
       emptyMessageMedia.data = '';
