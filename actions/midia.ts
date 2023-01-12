@@ -74,6 +74,12 @@ export const audio = async (msg: Message, requestedAudio: string) => {
     case `cala-boca`:
       emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/cala-boca.mpeg`)
       break;
+    case `nossa-veio`:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/nossa-veio.mpeg`)
+      break;
+    case `mim-de`:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/mim-de.mpeg`)
+      break;
     default:
       emptyMessageMedia.data = '';
       break;
