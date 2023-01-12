@@ -13,6 +13,6 @@ export default {
   CHANGE_STATE: 'CHANGE STATE',
   MESSAGE_RECEIVED: 'MESSAGE RECEIVED',
   DEFAULT_GROUP_TITLE: '🍞🛢️ Pão em Lata',
-  MIDIAS: `*Lista de midias:*\n\n*Áudios:*\nmidia acaba\nmidia acompanha-o-grupo\nmidia antigona\nmidia armadinho\nmidia ban\nmidia boca-de-leite\nmidia bola-rindo\nmidia de-novo\nmidia fogos\nmidia fora-do-brasil\nmidia linda-de-bonita\nmidia outra-vez\nmidia pao-em-lata-ost\nmidia pintou-notificacao-rony\nmidia ratinho-estourado\nmidia evita\nmidia bom-de-leite\n\n*Vídeos:*\nmidia fnx`,
+  MIDIAS: `*Lista de midias:*\n\n*Áudios:*\nmidia acaba\nmidia acompanha-o-grupo\nmidia antigona\nmidia armadinho\nmidia ban\nmidia boca-de-leite\nmidia bola-rindo\nmidia de-novo\nmidia fogos\nmidia fora-do-brasil\nmidia linda-de-bonita\nmidia outra-vez\nmidia pao-em-lata-ost\nmidia pintou-notificacao-rony\nmidia ratinho-estourado\nmidia evita\nmidia bom-de-leite\nmidia mim-de\nmidia nossa-veio\n\n*Vídeos:*\nmidia fnx`,
   COMANDOS:`*Lista de comandos:*\nall\nmidia,midia lista\npara\nnomepadrao\nteste`
 };
