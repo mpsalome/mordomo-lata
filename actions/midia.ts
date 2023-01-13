@@ -78,7 +78,7 @@ export const audio = async (msg: Message, requestedAudio: string) => {
       emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[19]}.mpeg`)
       break;
     case consts.ARRAY_VIDEOS[0]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_VIDEOS[0]}.mpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_VIDEOS[0]}.mpeg`)
       break;
     default:
       emptyMessageMedia.data = '';
