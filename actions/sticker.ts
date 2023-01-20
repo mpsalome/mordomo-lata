@@ -22,6 +22,7 @@ export const sticker = async (msg: Message) => {
     const chat: any = await msg.getChat();
     if (msg.hasQuotedMsg) {
         let quotedMsg = await msg.getQuotedMessage();
+        media = await getMessageMedia(msg);
         quotedMsg.reply(media, chat.chatId, { sendMediaAsSticker: true })
         return;
     }
