@@ -15,15 +15,12 @@ export const sticker = async (msg: Message) => {
         }
     }
     const chat: any = await msg.getChat();
-    if (chat.isGroup) {
-        let participants = chat.participants;
-        if (msg.hasQuotedMsg) {
-            let quotedMsg = await msg.getQuotedMessage();
-            quotedMsg.reply(media, chat.chatId, { mentions: participants, sendMediaAsSticker: true })
-            return;
-        }
-        msg.reply(media, chat.chatId, { mentions: participants, sendMediaAsSticker: true });
+    let participants = chat.participants;
+    if (msg.hasQuotedMsg) {
+        let quotedMsg = await msg.getQuotedMessage();
+        quotedMsg.reply(media, chat.chatId, { mentions: participants, sendMediaAsSticker: true })
         return;
     }
+    msg.reply(media, chat.chatId, { mentions: participants, sendMediaAsSticker: true });
     return;
 };
