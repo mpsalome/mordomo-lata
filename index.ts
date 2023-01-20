@@ -29,14 +29,11 @@ client.on('call', async (call: any) => {
   if (consts.REJECT_CALLS) await call.reject();
   await client.sendMessage(
     call.from,
-    `[${call.fromMe ? 'Outgoing' : 'Incoming'}] Phone call from ${
-      call.from
-    }, type ${call.isGroup ? 'group' : ''} ${
-      call.isVideo ? 'video' : 'audio'
-    } call. ${
-      consts.REJECT_CALLS
-        ? 'This call was automatically rejected by the script.'
-        : ''
+    `[${call.fromMe ? 'Outgoing' : 'Incoming'}] Phone call from ${call.from
+    }, type ${call.isGroup ? 'group' : ''} ${call.isVideo ? 'video' : 'audio'
+    } call. ${consts.REJECT_CALLS
+      ? 'This call was automatically rejected by the script.'
+      : ''
     }`
   );
 });
@@ -106,11 +103,11 @@ client.on('message', async (msg: Message) => {
   if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
   //used commands that have parameters
-  if(msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)){
+  if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)) {
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
   }
-  
+
   switch (msg.body) {
     case `${consts.COMMAND_SYMBOL}teste`:
       teste(msg);
@@ -125,13 +122,13 @@ client.on('message', async (msg: Message) => {
       para(msg);
       break;
     case `${consts.COMMAND_SYMBOL}comandos`:
-        comandos(msg);
-        break;
+      comandos(msg);
+      break;
     case `${consts.COMMAND_SYMBOL}comandos`:
-        sticker(msg);
-        break;
+      sticker(msg);
+      break;
     default:
-        comandos(msg);
+      comandos(msg);
       break;
   }
 });
