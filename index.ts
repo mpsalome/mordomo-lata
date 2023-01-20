@@ -106,6 +106,7 @@ client.on('message', async (msg: Message) => {
   if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)) {
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
+    return;
   }
 
   switch (msg.body) {
