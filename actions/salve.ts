@@ -2,8 +2,9 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 const Jimp = require("jimp");
 const path = require("path");
 const imagePath = path.resolve("./resources/images");
+const fontPath = path.resolve("./resources/fonts");
 
-export const para = async (msg: Message) => {
+export const salve = async (msg: Message) => {
   const chat: any = await msg.getChat();
   if (chat.isGroup) {
     if (msg.hasQuotedMsg) {
@@ -11,7 +12,7 @@ export const para = async (msg: Message) => {
       const contact = await quotedMsg.getContact();
       try {
         await textOverlay(`${contact.pushname}`);
-        const sticker: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`);
+        const sticker: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/will_sticker.png`);
 
         quotedMsg.reply(sticker, chat.chatId, {
           mentions: [contact],
@@ -26,9 +27,9 @@ export const para = async (msg: Message) => {
       return;
     }
 
-    await textOverlay(`PESSOAL`);
+    await textOverlay(`TODOS`);
 
-    const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`)
+    const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/will_sticker.png`)
     const participants = chat.participants;
 
     msg.reply(stickerGeneral, chat.chatId, {
@@ -42,8 +43,8 @@ export const para = async (msg: Message) => {
 };
 
 async function textOverlay(name: string) {
-  const image = await Jimp.read(`${imagePath}/salve_blank.jpg`);
-  const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
-  image.print(font, 19, 418, `${name}`);
-  await image.writeAsync(`${imagePath}/salve_sticker.png`);
+  const image = await Jimp.read(`${imagePath}/will_stop.jpg`);
+  const font = await Jimp.loadFont(`${fontPath}/maximum_impact/GRJ3inO74NleyXBCDFftvUtn.ttf.fnt`);
+  image.print(font, 40, 272, `${name}, PARA!!`, 353, 373);
+  await image.writeAsync(`${imagePath}/will_sticker.png`);
 }
