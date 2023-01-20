@@ -13,9 +13,19 @@ export default {
   CHANGE_STATE: 'CHANGE STATE',
   MESSAGE_RECEIVED: 'MESSAGE RECEIVED',
   DEFAULT_GROUP_TITLE: '🍞🛢️ Pão em Lata',
-  COMANDOS:`*Lista de comandos:*\nall\nmidia,midia lista\npara\nnomepadrao\nteste`,
+  COMANDOS: (comandos: string[]) => (`*Lista de comandos:*\n\n${comandos.map(comando=>`${comando}`).join(`\n`)}`),
+  ARRAY_COMANDOS: [
+    `all`,
+    `comandos`,
+    `midia lista`,
+    `midia [nome da midia]`,
+    `para`,
+    `nomepadrao`,
+    `teste`,
+    `sticker`
+  ],
   ARRAY_AUDIOS: [
-    'acaba',
+    `acaba`,
     `acompanha-o-grupo`,
     `antigona`,
     `armadinho`,
