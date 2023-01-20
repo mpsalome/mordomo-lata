@@ -17,6 +17,7 @@ import { all } from './actions/all';
 import { audio } from './actions/midia';
 import { para } from './actions/para';
 import { comandos } from './actions/comandos';
+import { sticker } from './actions/sticker';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -126,7 +127,11 @@ client.on('message', async (msg: Message) => {
     case `${consts.COMMAND_SYMBOL}comandos`:
         comandos(msg);
         break;
+    case `${consts.COMMAND_SYMBOL}comandos`:
+        sticker(msg);
+        break;
     default:
+        comandos(msg);
       break;
   }
 });
