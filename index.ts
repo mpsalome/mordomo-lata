@@ -132,4 +132,5 @@ client.on('message', async (msg: Message) => {
       comandos(msg);
       break;
   }
+  return;
 });
