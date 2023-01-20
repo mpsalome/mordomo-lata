@@ -2,6 +2,7 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 const Jimp = require("jimp");
 const path = require("path");
 const imagePath = path.resolve("./resources/images");
+const fontPath = path.resolve("./resources/fonts");
 
 export const salve = async (msg: Message) => {
   const chat: any = await msg.getChat();
@@ -29,10 +30,8 @@ export const salve = async (msg: Message) => {
     await textOverlay(`PESSOAL`);
 
     const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`)
-    const participants = chat.participants;
 
     msg.reply(stickerGeneral, chat.chatId, {
-      mentions: participants,
       sendMediaAsSticker: true,
     });
 
@@ -43,7 +42,7 @@ export const salve = async (msg: Message) => {
 
 async function textOverlay(name: string) {
   const image = await Jimp.read(`${imagePath}/salve_blank.png`);
-  const font = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
-  image.print(font, 19, 418, `${name}`);
+  const font = await Jimp.loadFont(`${fontPath}/bebas_neue/fn0Aw5cPObO5pPproIXmFG1e.ttf.fnt`);
+  image.print(font, 12, 375, `${name}`);
   await image.writeAsync(`${imagePath}/salve_sticker.png`);
 }
