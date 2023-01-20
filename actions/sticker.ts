@@ -7,7 +7,7 @@ export const sticker = async (msg: Message) => {
     } else {
         if (msg.hasQuotedMsg) {
             let quotedMsg = await msg.getQuotedMessage();
-            if (quotedMsg.hasQuotedMsg) {
+            if (quotedMsg.hasMedia) {
                 media = await quotedMsg.downloadMedia();
             } else {
                 return;
