@@ -21,7 +21,8 @@ export default {
     `midia [nome da midia]`,
     `para`,
     `nomepadrao`,
-    `teste`
+    `teste`,
+    `sticker`
   ],
   ARRAY_AUDIOS: [
     `acaba`,
