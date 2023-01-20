@@ -1,7 +1,19 @@
-import { Message } from 'whatsapp-web.js';
+import { Message, MessageMedia } from 'whatsapp-web.js';
 
 export const sticker = async (msg: Message) => {
-    const media = await msg.downloadMedia();
+    let media: MessageMedia = new MessageMedia(``, ``, ``);
+    if (msg.hasMedia) {
+        media = await msg.downloadMedia();
+    } else {
+        if (msg.hasQuotedMsg) {
+            let quotedMsg = await msg.getQuotedMessage();
+            if (quotedMsg.hasQuotedMsg) {
+                media = await quotedMsg.downloadMedia();
+            } else {
+                return;
+            }
+        }
+    }
     const chat: any = await msg.getChat();
     if (chat.isGroup) {
         let participants = chat.participants;
