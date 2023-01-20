@@ -124,7 +124,7 @@ client.on('message', async (msg: Message) => {
     case `${consts.COMMAND_SYMBOL}comandos`:
       comandos(msg);
       break;
-    case `${consts.COMMAND_SYMBOL}comandos`:
+    case `${consts.COMMAND_SYMBOL}sticker`:
       sticker(msg);
       break;
     default:
