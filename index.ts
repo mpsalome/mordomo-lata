@@ -18,6 +18,7 @@ import { audio } from './actions/midia';
 import { para } from './actions/para';
 import { comandos } from './actions/comandos';
 import { sticker } from './actions/sticker';
+import { salve } from './actions/salve';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -90,6 +91,9 @@ client.on('message', async (msg: Message) => {
       break;
     case `${consts.COMMAND_SYMBOL}sticker`:
       sticker(msg);
+      break;
+    case `${consts.COMMAND_SYMBOL}salve`:
+      salve(msg);
       break;
     default:
       comandos(msg);
