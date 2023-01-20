@@ -106,6 +106,10 @@ client.on('message', async (msg: Message) => {
   if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)) {
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
+    return;
+  }else if(msg.body.startsWith(`${consts.COMMAND_SYMBOL}sticker`)){
+    sticker(msg)
+    return;
   }
 
   switch (msg.body) {
@@ -123,9 +127,6 @@ client.on('message', async (msg: Message) => {
       break;
     case `${consts.COMMAND_SYMBOL}comandos`:
       comandos(msg);
-      break;
-    case `${consts.COMMAND_SYMBOL}sticker`:
-      sticker(msg);
       break;
     default:
       comandos(msg);
