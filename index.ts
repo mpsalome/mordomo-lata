@@ -71,6 +71,9 @@ client.on('message', async (msg: Message) => {
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
     return;
+  }else if(msg.body.startsWith(`${consts.COMMAND_SYMBOL}salve`)){
+    salve(msg);
+    return;
   }
 
   switch (msg.body) {
@@ -91,9 +94,6 @@ client.on('message', async (msg: Message) => {
       break;
     case `${consts.COMMAND_SYMBOL}sticker`:
       sticker(msg);
-      break;
-    case `${consts.COMMAND_SYMBOL}salve`:
-      salve(msg);
       break;
     default:
       comandos(msg);
