@@ -18,6 +18,7 @@ import { audio } from './actions/midia';
 import { para } from './actions/para';
 import { comandos } from './actions/comandos';
 import { sticker } from './actions/sticker';
+import { salve } from './actions/salve';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -69,6 +70,9 @@ client.on('message', async (msg: Message) => {
   if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)) {
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
+    return;
+  }else if(msg.body.startsWith(`${consts.COMMAND_SYMBOL}salve`)){
+    salve(msg);
     return;
   }
 

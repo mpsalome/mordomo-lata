@@ -30,10 +30,8 @@ export const para = async (msg: Message) => {
     await textOverlay(`TODOS`);
 
     const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/will_sticker.png`)
-    const participants = chat.participants;
 
     msg.reply(stickerGeneral, chat.chatId, {
-      mentions: participants,
       sendMediaAsSticker: true,
     });
 
