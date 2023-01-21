@@ -10,12 +10,7 @@ export const salve = async (msg: Message) => {
   if (chat.isGroup) {
     if (msg.body.split(` `).length > 1 && mentioned) {
       await textOverlay(`${mentioned[0].pushname}`);
-      const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`)
-
-      msg.reply(stickerGeneral, chat.chatId, {
-        sendMediaAsSticker: true,
-      });
-  
+      sendSticker(msg, chat);
       return;
     }
 
@@ -24,12 +19,8 @@ export const salve = async (msg: Message) => {
       const contact = await quotedMsg.getContact();
       try {
         await textOverlay(`${contact.pushname}`);
-        const sticker: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`);
-
-        quotedMsg.reply(sticker, chat.chatId, {
-          mentions: [contact],
-          sendMediaAsSticker: true,
-        });
+        sendSticker(msg, chat);
+        return;
 
       } catch (error) {
         quotedMsg.reply(`Deu erro: ${error}`, chat.chatId, {
@@ -41,12 +32,7 @@ export const salve = async (msg: Message) => {
 
     await textOverlay(`PESSOAL`);
 
-    const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`)
-
-    msg.reply(stickerGeneral, chat.chatId, {
-      sendMediaAsSticker: true,
-    });
-
+    sendSticker(msg, chat);
     return;
   }
   return;
@@ -57,4 +43,14 @@ async function textOverlay(name: string) {
   const font = await Jimp.loadFont(`${fontPath}/bebas_neue/fn0Aw5cPObO5pPproIXmFG1e.ttf.fnt`);
   image.print(font, 12, 375, `${name}`);
   await image.writeAsync(`${imagePath}/salve_sticker.png`);
+}
+
+function sendSticker(msg: Message, chat: any) {
+  const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`)
+
+  msg.reply(stickerGeneral, chat.chatId, {
+    sendMediaAsSticker: true,
+  });
+
+  return;
 }
