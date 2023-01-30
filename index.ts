@@ -96,7 +96,6 @@ client.on('message', async (msg: Message) => {
       sticker(msg);
       break;
     default:
-      comandos(msg);
       break;
   }
   return;
