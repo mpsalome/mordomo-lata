@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "jimp": "^0.16.2",
+    "openai": "^3.1.0",
     "qrcode-terminal": "^0.12.0",
     "ts-node": "^10.9.1",
     "whatsapp-web.js": "^1.19.2"
