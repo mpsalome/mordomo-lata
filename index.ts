@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { Client } = require('whatsapp-web.js');
 const raspberryArgs = {
   puppeteer: {
@@ -19,6 +20,7 @@ import { para } from './actions/para';
 import { comandos } from './actions/comandos';
 import { sticker } from './actions/sticker';
 import { salve } from './actions/salve';
+import { gpt } from './actions/gpt';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -71,8 +73,11 @@ client.on('message', async (msg: Message) => {
     let requestedAudio = msg.body.split(` `)[1];
     audio(msg, requestedAudio);
     return;
-  }else if(msg.body.startsWith(`${consts.COMMAND_SYMBOL}salve`)){
+  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}salve`)) {
     salve(msg);
+    return;
+  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}meconta`)) {
+    gpt(msg);
     return;
   }
 
