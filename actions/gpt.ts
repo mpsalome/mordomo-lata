@@ -18,7 +18,8 @@ export const gpt = async (msg: Message) => {
 async function askQuestion(question: string, openai: any) {
     const completion = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `${question.replace(/(\r\n|\n|\r)/gm, "")}`,
+        prompt: `${question}`,
+        "max_tokens": 1000 
     });
-    return(completion.data.choices[0].text);
+    return(completion.data.choices[0].text.trim());
 }
