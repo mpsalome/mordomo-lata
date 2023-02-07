@@ -28,7 +28,7 @@ export default {
     `acaba`,
     `acompanha-o-grupo`,
     `antigona`,
-    `armadinho`,
+    `armandinho`,
     `ban`,
     `boca-de-leite`,
     `bola-rindo`,
