@@ -23,7 +23,8 @@ export default {
     `nomepadrao`,
     `teste`,
     `sticker`,
-    `meconta [contexto|pergunta|pedido]`
+    `meconta [contexto|pergunta|pedido]`,
+    `falai`
   ],
   ARRAY_AUDIOS: [
     `acaba`,
