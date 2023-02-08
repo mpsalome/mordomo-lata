@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
+    "@prisma/client": "^4.10.0",
     "dotenv": "^16.0.3",
     "google-tts-api": "^2.0.2",
     "jimp": "^0.16.2",
@@ -34,6 +35,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
+    "prisma": "^4.10.0",
     "typescript": "^4.9.4"
   },
   "type": "module node --experimental-specifier-resolution=node --loader ts-node/esm ./index.ts"
