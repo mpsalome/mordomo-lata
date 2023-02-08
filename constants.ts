@@ -22,7 +22,8 @@ export default {
     `para`,
     `nomepadrao`,
     `teste`,
-    `sticker`
+    `sticker`,
+    `falai`
   ],
   ARRAY_AUDIOS: [
     `acaba`,
