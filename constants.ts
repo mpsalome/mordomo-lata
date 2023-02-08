@@ -23,13 +23,14 @@ export default {
     `nomepadrao`,
     `teste`,
     `sticker`,
+    `meconta [contexto|pergunta|pedido]`,
     `falai`
   ],
   ARRAY_AUDIOS: [
     `acaba`,
     `acompanha-o-grupo`,
     `antigona`,
-    `armadinho`,
+    `armandinho`,
     `ban`,
     `boca-de-leite`,
     `bola-rindo`,
