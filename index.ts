@@ -21,6 +21,7 @@ import { comandos } from './actions/comandos';
 import { sticker } from './actions/sticker';
 import { salve } from './actions/salve';
 import { gpt } from './actions/gpt';
+import { falai } from './actions/falai';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -79,8 +80,11 @@ client.on('message', async (msg: Message) => {
   } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}meconta`)) {
     gpt(msg);
     return;
+  }else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}falai`)) {
+    falai(msg);
+    return;
   }
-
+  
   switch (msg.body) {
     case `${consts.COMMAND_SYMBOL}teste`:
       teste(msg);

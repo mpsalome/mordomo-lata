@@ -20,6 +20,7 @@
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "google-tts-api": "^2.0.2",
     "jimp": "^0.16.2",
     "openai": "^3.1.0",
     "qrcode-terminal": "^0.12.0",
