@@ -77,6 +77,9 @@ export const audio = async (msg: Message, requestedAudio: string) => {
     case consts.ARRAY_AUDIOS[19]:
       emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[19]}.mpeg`)
       break;
+    case consts.ARRAY_AUDIOS[20]:
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[20]}.mpeg`)
+      break;
     case consts.ARRAY_VIDEOS[0]:
       emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_VIDEOS[0]}.mp4`)
       break;
@@ -84,7 +87,7 @@ export const audio = async (msg: Message, requestedAudio: string) => {
       emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_VIDEOS[1]}.mp4`)
       break;
     case consts.ARRAY_IMAGENS[0]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[0]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[0]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[1]:
       emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[1]}.jpeg`)
