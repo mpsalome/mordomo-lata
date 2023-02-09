@@ -47,11 +47,21 @@ export default {
     `cala-boca`,
     `nossa-veio`,
     `mim-de`,
+    `venha-baiano`
   ],
   ARRAY_VIDEOS: [
     `fnx`,
   ],
-  MIDIAS: (audios: Array<String>, videos: Array<String>) => (
-    `*Lista de midias:*\n\n*Áudios:*\n${audios.map(audio => `midia ${audio}`).join('\n')}\n\n*Vídeos:* \n${videos.map(audio => `midia ${audio}`).join('\n')}`
+  ARRAY_IMAGENS: [
+    `domingo`,
+    `segunda-feira`,
+    `terca-feira`,
+    `quarta-feira`,
+    `quinta-feira`,
+    `sexta-feira`,
+    `sabado`
+  ],
+  MIDIAS: (audios: Array<String>, videos: Array<String>, images: Array<String>) => (
+    `*Lista de midias:*\n\n*Áudios:*\n${audios.map(audio => `midia ${audio}`).join('\n')}\n\n*Vídeos:* \n${videos.map(audio => `midia ${audio}`).join('\n')}\n\n${images.map(image=>`midia ${image}`).join('\n')}`
   )
 };
