@@ -51,6 +51,7 @@ export default {
   ],
   ARRAY_VIDEOS: [
     `fnx`,
+    `ditadura`
   ],
   ARRAY_IMAGENS: [
     `domingo`,
@@ -62,6 +63,6 @@ export default {
     `sabado`
   ],
   MIDIAS: (audios: Array<String>, videos: Array<String>, images: Array<String>) => (
-    `*Lista de midias:*\n\n*Áudios:*\n${audios.map(audio => `midia ${audio}`).join('\n')}\n\n*Vídeos:* \n${videos.map(audio => `midia ${audio}`).join('\n')}\n\n${images.map(image=>`midia ${image}`).join('\n')}`
+    `*Lista de midias:*\n\n*Áudios:*\n${audios.map(audio => `midia ${audio}`).join('\n')}\n\n*Vídeos:* \n${videos.map(audio => `midia ${audio}`).join('\n')}\n\n*Imagens:* \n${images.map(image=>`midia ${image}`).join('\n')}`
   )
 };
