@@ -22,6 +22,7 @@ import { sticker } from './actions/sticker';
 import { salve } from './actions/salve';
 import { gpt } from './actions/gpt';
 import { falai } from './actions/falai';
+import { criacomando } from './actions/criacomando';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -82,6 +83,9 @@ client.on('message', async (msg: Message) => {
     return;
   }else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}falai`)) {
     falai(msg);
+    return;
+  }else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}criacomando`)) {
+    criacomando(msg);
     return;
   }
   
