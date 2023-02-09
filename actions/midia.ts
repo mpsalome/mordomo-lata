@@ -3,7 +3,7 @@ import consts from '../constants';
 const path = require("path");
 const audioPath = path.resolve("./resources/audios");
 const videoPath = path.resolve("./resources/videos");
-
+const imagePath = path.resolve("./resources/images");
 
 export const audio = async (msg: Message, requestedAudio: string) => {
   let emptyMessageMedia: MessageMedia = new MessageMedia(``, ``, ``);
@@ -87,22 +87,22 @@ export const audio = async (msg: Message, requestedAudio: string) => {
       emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[0]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[1]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[1]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[1]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[2]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[2]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[2]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[3]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[3]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[3]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[4]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[4]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[4]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[5]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[5]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[5]}.jpeg`)
       break;
     case consts.ARRAY_IMAGENS[6]:
-      emptyMessageMedia = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_IMAGENS[6]}.jpeg`)
+      emptyMessageMedia = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[6]}.jpeg`)
       break;
     default:
       emptyMessageMedia.data = '';
