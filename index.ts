@@ -77,7 +77,7 @@ client.on('message', async (msg: Message) => {
   } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}salve`)) {
     salve(msg);
     return;
-  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}meconta`)) {
+  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}meconta`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}dan`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}stan`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}dude`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mongo`)) {
     gpt(msg);
     return;
   }else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}falai`)) {
