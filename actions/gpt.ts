@@ -33,6 +33,9 @@ export const gpt = async (msg: Message) => {
             case 'mongo':
                 jailbreak_prompt = consts.JAILBREAK_GPT_MONGO;
                 break;
+            case 'evil':
+                jailbreak_prompt = consts.JAILBREAK_GPT_EVIL;
+                break;
             default:
                 jailbreak_prompt = consts.JAILBREAK_GPT_MONGO;
                 break;
