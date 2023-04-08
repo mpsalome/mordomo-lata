@@ -68,11 +68,12 @@ client.on('disconnected', (reason: any) => {
 
 client.on('message', async (msg: Message) => {
   if (process.env.RANDOMLY_ANSWER) {
-    if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}`) || Math.random() < Number(process.env.RANDOMLY_ANSWER_CHANCE)) {
+    if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`) && Math.random() <= Number(process.env.RANDOMLY_ANSWER_CHANCE)) {
+      msg.body = `!evil ${msg.body}`;
+      gpt(msg);
       return;
     } else {
-      msg.body.concat("!evil ", msg.body)
-      gpt(msg);
+      return;
     }
   }else {
     if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
