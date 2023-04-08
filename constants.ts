@@ -12,7 +12,7 @@ export default {
   GROUP_UPDATE: 'Group updated',
   CHANGE_STATE: 'CHANGE STATE',
   MESSAGE_RECEIVED: 'MESSAGE RECEIVED',
-  DEFAULT_GROUP_TITLE: '🍞🛢️ Pão em Lata',
+  DEFAULT_GROUP_TITLE: process.env.NOME_PADRAO|| '🍞🛢️ Pão em Lata',
   COMANDOS: (comandos: string[]) => (`*Lista de comandos:*\n\n${comandos.map(comando=>`${comando}`).join(`\n`)}`),
   ARRAY_COMANDOS: [
     `all`,
