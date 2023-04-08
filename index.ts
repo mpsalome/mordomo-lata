@@ -67,17 +67,13 @@ client.on('disconnected', (reason: any) => {
 });
 
 client.on('message', async (msg: Message) => {
-  if (process.env.RANDOMLY_ANSWER) {
-    if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`) && Math.random() <= Number(process.env.RANDOMLY_ANSWER_CHANCE)) {
-      msg.body = `!evil ${msg.body}`;
-      gpt(msg);
-      return;
-    } else {
-      return;
-    }
-  }else {
-    if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
+  if (process.env.RANDOMLY_ANSWER && !msg.body.startsWith(`${consts.COMMAND_SYMBOL}`) && Math.random() <= Number(process.env.RANDOMLY_ANSWER_CHANCE)) {
+    msg.body = `!evil ${msg.body}`;
+    gpt(msg);
+    return;
   }
+
+  if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
   //used commands that have parameters
   if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}midia`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mídia`)) {
