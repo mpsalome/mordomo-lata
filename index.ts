@@ -68,7 +68,8 @@ client.on('disconnected', (reason: any) => {
 
 client.on('message', async (msg: Message) => {
   if (process.env.RANDOMLY_ANSWER && !msg.body.startsWith(`${consts.COMMAND_SYMBOL}`) && Math.random() <= Number(process.env.RANDOMLY_ANSWER_CHANCE)) {
-    msg.body = `!evil ${msg.body}`;
+    let prompt = Math.random() >= 0.5 ? `${consts.COMMAND_SYMBOL}evil` : `${consts.COMMAND_SYMBOL}meconta`;
+    msg.body = `${prompt} ${msg.body}`;
     gpt(msg);
     return;
   }
