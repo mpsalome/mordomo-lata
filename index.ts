@@ -22,6 +22,7 @@ import { sticker } from './actions/sticker';
 import { salve } from './actions/salve';
 import { gpt } from './actions/gpt';
 import { falai } from './actions/falai';
+import { burro } from './actions/burro';
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -109,6 +110,9 @@ client.on('message', async (msg: Message) => {
       break;
     case `${consts.COMMAND_SYMBOL}sticker`:
       sticker(msg);
+      break;
+    case `${consts.COMMAND_SYMBOL}burro`:
+      burro(msg);
       break;
     default:
       break;
