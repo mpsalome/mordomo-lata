@@ -24,7 +24,8 @@ export default {
     `teste`,
     `sticker`,
     `meconta [contexto|pergunta|pedido]`,
-    `falai`
+    `falai`,
+    `burro`
   ],
   ARRAY_AUDIOS: [
     `acaba`,
