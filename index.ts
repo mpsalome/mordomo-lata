@@ -23,6 +23,8 @@ import { salve } from './actions/salve';
 import { gpt } from './actions/gpt';
 import { falai } from './actions/falai';
 import { burro } from './actions/burro';
+import { criacomando } from './actions/criacomando'
+import { lecomando } from './actions/lecomando'
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -87,11 +89,14 @@ client.on('message', async (msg: Message) => {
   } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}meconta`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}dan`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}stan`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}dude`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}mongo`) || msg.body.startsWith(`${consts.COMMAND_SYMBOL}evil`)) {
     gpt(msg);
     return;
-  }else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}falai`)) {
+  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}falai`)) {
     falai(msg);
     return;
+  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}criacomando`)) {
+    criacomando(msg);
+    return;
   }
-  
+
   switch (msg.body) {
     case `${consts.COMMAND_SYMBOL}teste`:
       teste(msg);
@@ -117,5 +122,9 @@ client.on('message', async (msg: Message) => {
     default:
       break;
   }
+
+  //custom commands that don't match any of the criterias used above
+  lecomando(msg);
+
   return;
 });
