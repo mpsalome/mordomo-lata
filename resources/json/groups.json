@@ -1,0 +1,14 @@
+[
+  {
+    "chatId": {},
+    "commands": [
+      { "name": "lorem", "type": "count", "count": 3, "answer": "ipsum" },
+      {
+        "name": "lorem",
+        "type": "answer",
+        "count": 0,
+        "answer": "lorem ipsum dolor sit amet"
+      }
+    ]
+  }
+]
