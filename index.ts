@@ -25,6 +25,7 @@ import { falai } from './actions/falai';
 import { burro } from './actions/burro';
 import { criacomando } from './actions/criacomando'
 import { lecomando } from './actions/lecomando'
+import { atualizacomando } from './actions/atualizacomando'
 
 //interfaces imports
 import { Message } from 'whatsapp-web.js';
@@ -94,6 +95,9 @@ client.on('message', async (msg: Message) => {
     return;
   } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}criacomando`)) {
     criacomando(msg);
+    return;
+  } else if (msg.body.startsWith(`${consts.COMMAND_SYMBOL}atualizacomando`)) {
+    atualizacomando(msg);
     return;
   }
 
