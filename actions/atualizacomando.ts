@@ -23,6 +23,11 @@ export const atualizacomando = async (msg: Message) => {
     const newAnswer = subMsg.split(`;`)[1].trim();
     const commandIndex: number = getCommandIndex(commands, commandName);
 
+    if (commandIndex < 0) {
+        chat.sendMessage("Comando não encontrado.");
+        return;
+    }
+
     await updateGroupChatCommand(chatId, commandIndex, newAnswer);
 
     chat.sendMessage("Comando atualizado.");

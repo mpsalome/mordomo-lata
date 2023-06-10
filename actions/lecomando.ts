@@ -21,6 +21,8 @@ export const lecomando = async (msg: Message) => {
     const commandIndex: number = getCommandIndex(commands, commandName);
     const commandUsed: CustomCommand = commands[commandIndex];
 
+    if (commandIndex < 0) return;
+
     let reply = "";
 
     await updateGroupChatCommand(chatId, commandIndex);
