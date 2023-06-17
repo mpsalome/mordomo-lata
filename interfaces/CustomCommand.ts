@@ -3,4 +3,5 @@ export interface CustomCommand {
     type: string,
     count: number,
     answer: string
+    media: string
 }

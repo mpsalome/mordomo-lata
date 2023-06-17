@@ -21,12 +21,18 @@ export const criacomando = async (msg: Message) => {
     const commandName: string = subMsg.split(";")[0].trim();
     const commandType: string = subMsg.split(";")[1].trim();
     const commandAnswer: string = subMsg.split(";")[2].trim();
+    let commandMedia: string = "";
+    
+    if (msg.hasMedia) {
+        commandMedia = (await msg.downloadMedia()).data;  
+    }
 
     const newCommand: CustomCommand = {
         "name": commandName,
         "type": commandType,
         "count": 0,
         "answer": commandAnswer,
+        "media": commandMedia
     };
 
     await insertGroupChatCommand(chatId, newCommand);
