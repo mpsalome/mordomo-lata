@@ -1,4 +1,4 @@
-import { Chat, Message, ChatId } from "whatsapp-web.js";
+import { Chat, Message, ChatId, MessageMedia } from "whatsapp-web.js";
 import { CustomGroupChat } from "../interfaces/CustomGroup";
 import { CustomCommand } from "../interfaces/CustomCommand";
 import consts from '../constants';
@@ -21,10 +21,14 @@ export const criacomando = async (msg: Message) => {
     const commandName: string = subMsg.split(";")[0].trim();
     const commandType: string = subMsg.split(";")[1].trim();
     const commandAnswer: string = subMsg.split(";")[2].trim();
-    let commandMedia: string = "";
+    let commandMedia: MessageMedia = new MessageMedia(``, ``, ``);
     
     if (msg.hasMedia) {
-        commandMedia = (await msg.downloadMedia()).data;  
+        let downloadedMedia: MessageMedia = await msg.downloadMedia();
+        commandMedia.data = downloadedMedia.data;
+        commandMedia.mimetype = downloadedMedia.mimetype;
+        commandMedia.filename = downloadedMedia.filename;
+        commandMedia.filesize = downloadedMedia.filesize;
     }
 
     const newCommand: CustomCommand = {

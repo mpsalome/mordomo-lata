@@ -1,7 +1,9 @@
+import { MessageMedia } from "whatsapp-web.js"
+
 export interface CustomCommand {
     name: string,
-    type: string, // count, answer or media
+    type: string,  // Command types: count, answer, media, audio, document, sticker, gif
     count: number,
     answer: string
-    media: string
+    media: MessageMedia
 }

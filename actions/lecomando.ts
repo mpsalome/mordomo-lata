@@ -1,4 +1,4 @@
-import { Chat, Message, ChatId } from "whatsapp-web.js";
+import { Chat, Message, ChatId, MessageMedia, MessageSendOptions } from "whatsapp-web.js";
 import { CustomGroupChat } from "../interfaces/CustomGroup";
 import { CustomCommand } from "../interfaces/CustomCommand";
 import consts from '../constants';
@@ -23,18 +23,31 @@ export const lecomando = async (msg: Message) => {
 
     if (commandIndex < 0) return;
 
-    let reply = "";
+    let reply:string|MessageMedia = "";
+    let options:MessageSendOptions = {};
 
     await updateGroupChatCommand(chatId, commandIndex);
+ 
+    // Command types: count, answer, media, audio, document, sticker, gif
 
     if (commandUsed.type === "count") {
         const vezes: string = commandUsed.count > 1 ? "vezes" : "vez";
         reply = `${commandUsed.answer} ${commandUsed.count} ${vezes}`;
-    } else {
+    } else if (commandUsed.type === "answer") {
         reply = `${commandUsed.answer}`;
+    } else if (commandUsed.type === 'sticker' || commandUsed.type === 'audio' || commandUsed.type === 'media' ||commandUsed.type === 'gif' || commandUsed.type === 'document'){
+        const commandMedia = new MessageMedia(commandUsed.media.mimetype, commandUsed.media.data, commandUsed.media.filename, commandUsed.media.filesize);
+        options = {
+            sendMediaAsSticker: commandUsed.type === 'sticker' ? true : false,
+            sendAudioAsVoice: commandUsed.type === 'audio' ? true : false,
+            sendVideoAsGif: commandUsed.type === 'gif' ? true : false,
+            sendMediaAsDocument: commandUsed.type === 'document' ? true : false, 
+            media: commandMedia,
+        };
+        reply = commandMedia;
     }
 
-    chat.sendMessage(reply);
+    chat.sendMessage(reply, options);
 
     return;
 };
