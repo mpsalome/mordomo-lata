@@ -10,7 +10,7 @@ const path = require("path");
 export const atualizacomando = async (msg: Message) => {
 
     const chat: Chat = await msg.getChat();
-    const chatId: ChatId = chat.id._serialized;
+    const chatId: ChatId = chat.id;
     const groups: Array<CustomGroupChat> = JSON.parse(fs.readFileSync(path.resolve("./resources/json/groups.json"), "utf-8"));
     const groupChatIndex: number = getGroupChatIndex(groups, chatId);
 
