@@ -6,10 +6,10 @@ export const all = async (msg: Message) => {
     let participants = chat.participants;
     if (msg.hasQuotedMsg){
       let quotedMsg = await msg.getQuotedMessage();
-      quotedMsg.reply(`🚨 *ATENÇÃO* 🚨`, chat.id, { mentions: participants })
+      quotedMsg.reply(`🚨 *ATENÇÃO* 🚨`, chat.id._serialized, { mentions: participants })
       return;
     }
-    msg.reply(`🚨 *ATENÇÃO* 🚨`, chat.id, { mentions: participants });
+    msg.reply(`🚨 *ATENÇÃO* 🚨`, chat.id._serialized, { mentions: participants });
     return;
   }
   return;
