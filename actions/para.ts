@@ -14,13 +14,13 @@ export const para = async (msg: Message) => {
         await textOverlay(`${contact.pushname}`);
         const sticker: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/will_sticker.png`);
 
-        quotedMsg.reply(sticker, chat.chatId, {
+        quotedMsg.reply(sticker, chat.id, {
           mentions: [contact],
           sendMediaAsSticker: true,
         });
 
       } catch (error) {
-        quotedMsg.reply(`Deu erro: ${error}`, chat.chatId, {
+        quotedMsg.reply(`Deu erro: ${error}`, chat.id, {
           mentions: [contact]
         });
       }
@@ -31,7 +31,7 @@ export const para = async (msg: Message) => {
 
     const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/will_sticker.png`)
 
-    msg.reply(stickerGeneral, chat.chatId, {
+    msg.reply(stickerGeneral, chat.id, {
       sendMediaAsSticker: true,
     });
 

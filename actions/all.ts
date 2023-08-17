@@ -4,12 +4,12 @@ export const all = async (msg: Message) => {
   let chat: any = await msg.getChat();
   if (chat.isGroup) {
     let participants = chat.participants;
-    if(msg.hasQuotedMsg){
+    if (msg.hasQuotedMsg){
       let quotedMsg = await msg.getQuotedMessage();
-      quotedMsg.reply(`🚨 *ATENÇÃO* 🚨`, chat.chatId, { mentions: participants })
+      quotedMsg.reply(`🚨 *ATENÇÃO* 🚨`, chat.id, { mentions: participants })
       return;
     }
-    msg.reply(`🚨 *ATENÇÃO* 🚨`, chat.chatId, { mentions: participants });
+    msg.reply(`🚨 *ATENÇÃO* 🚨`, chat.id, { mentions: participants });
     return;
   }
   return;

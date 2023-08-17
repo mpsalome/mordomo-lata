@@ -23,7 +23,7 @@ export const salve = async (msg: Message) => {
         return;
 
       } catch (error) {
-        quotedMsg.reply(`Deu erro: ${error}`, chat.chatId, {
+        quotedMsg.reply(`Deu erro: ${error}`, chat.id, {
           mentions: [contact]
         });
       }
@@ -48,7 +48,7 @@ async function textOverlay(name: string) {
 function sendSticker(msg: Message, chat: any) {
   const stickerGeneral: MessageMedia = MessageMedia.fromFilePath(`${imagePath}/salve_sticker.png`)
 
-  msg.reply(stickerGeneral, chat.chatId, {
+  msg.reply(stickerGeneral, chat.id, {
     sendMediaAsSticker: true,
   });
 
