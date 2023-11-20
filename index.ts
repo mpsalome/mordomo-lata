@@ -109,7 +109,7 @@ client.on('message', async (msg: Message) => {
       nomepadrao(msg, consts.DEFAULT_GROUP_TITLE);
       break;
     case `${consts.COMMAND_SYMBOL}all`:
-      all(msg);
+      all(msg, client);
       break;
     case `${consts.COMMAND_SYMBOL}para`:
       para(msg);
