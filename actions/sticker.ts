@@ -1,25 +1,13 @@
-import { Message, MessageMedia } from 'whatsapp-web.js';
+import { Chat, Message, MessageMedia } from 'whatsapp-web.js';
+import { replyQuotedMsg } from '../utils';
 
 export const sticker = async (msg: Message) => {
-    let media: MessageMedia = new MessageMedia(``, ``, ``);
-    if (msg.hasMedia) {
-        media = await msg.downloadMedia();
-    } else {
-        if (msg.hasQuotedMsg) {
-            let quotedMsg = await msg.getQuotedMessage();
-            if (quotedMsg.hasMedia) {
-                media = await quotedMsg.downloadMedia();
-            } else {
-                return;
-            }
-        }
+    const chat: Chat = await msg.getChat();
+    let media: MessageMedia = (msg.hasMedia && !msg.hasQuotedMsg) ? await msg.downloadMedia() : {} as MessageMedia
+    if (msg.hasQuotedMsg && (await msg.getQuotedMessage()).hasMedia) {
+        const quotedMsg:Message = await msg.getQuotedMessage();
+        media = await quotedMsg.downloadMedia();
     }
-    const chat: any = await msg.getChat();
-    if (msg.hasQuotedMsg) {
-        let quotedMsg = await msg.getQuotedMessage();
-        quotedMsg.reply(media, chat.chatId, { sendMediaAsSticker: true })
-        return;
-    }
-    msg.reply(media, chat.chatId, { sendMediaAsSticker: true });
+    replyQuotedMsg(msg, media, chat.id, { sendMediaAsSticker: true })
     return;
 };
