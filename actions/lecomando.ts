@@ -1,7 +1,7 @@
 import { Chat, Message, ChatId } from "whatsapp-web.js";
 import { CustomGroupChat } from "../interfaces/CustomGroup";
 import { CustomCommand } from "../interfaces/CustomCommand";
-import consts from '../constants';
+import consts from '../utils/constants';
 
 const fs = require("fs");
 const path = require("path");

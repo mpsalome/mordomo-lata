@@ -1,5 +1,5 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
-import consts from '../constants';
+import consts from '../utils/constants';
 const path = require("path");
 const audioPath = path.resolve("./resources/audios");
 const videoPath = path.resolve("./resources/videos");

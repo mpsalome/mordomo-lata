@@ -1,5 +1,5 @@
 import { Message } from 'whatsapp-web.js';
-import consts from '../constants';
+import consts from '../utils/constants';
 
 export const comandos = async (msg: Message) => {
   if (msg.hasQuotedMsg) {

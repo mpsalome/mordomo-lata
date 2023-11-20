@@ -8,7 +8,7 @@ const raspberryArgs = {
   }
 };
 const client = new Client(process.argv[2] ? raspberryArgs : {});
-import consts from './constants';
+import consts from './utils/constants';
 const qrcode = require('qrcode-terminal');
 
 //actions on msg received
