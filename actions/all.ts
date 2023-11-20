@@ -1,15 +1,17 @@
-import { Message } from 'whatsapp-web.js';
+import { Chat, Client, Contact, GroupChat, GroupParticipant, Message } from 'whatsapp-web.js';
+import { replyQuotedMsg, getContactsFrom } from '../utils/index'
 
-export const all = async (msg: Message) => {
-  let chat: any = await msg.getChat();
+export const all = async (msg: Message, client: Client) => {
+  const chat: Chat = await msg.getChat()
   if (chat.isGroup) {
-    let participants = chat.participants;
-    if(msg.hasQuotedMsg){
-      let quotedMsg = await msg.getQuotedMessage();
-      quotedMsg.reply(`🚨 *ATENÇÃO* 🚨`, chat.chatId, { mentions: participants })
-      return;
-    }
-    msg.reply(`🚨 *ATENÇÃO* 🚨`, chat.chatId, { mentions: participants });
+    const group: GroupChat = chat as GroupChat;
+    const participants: GroupParticipant[] = group.participants
+    const mentions: Contact[] = await getContactsFrom(participants, client)
+    let text = `🚨 *ATENÇÃO* 🚨\n`
+    mentions.forEach( contact => {
+      text+= `@${contact.id.user} `
+    })
+    replyQuotedMsg(msg, text.trim(), group.id, { mentions })
     return;
   }
   return;

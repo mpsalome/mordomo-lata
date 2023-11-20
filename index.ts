@@ -8,7 +8,7 @@ const raspberryArgs = {
   }
 };
 const client = new Client(process.argv[2] ? raspberryArgs : {});
-import consts from './constants';
+import consts from './utils/constants';
 const qrcode = require('qrcode-terminal');
 
 //actions on msg received
@@ -71,12 +71,6 @@ client.on('disconnected', (reason: any) => {
 });
 
 client.on('message', async (msg: Message) => {
-  if (process.env.RANDOMLY_ANSWER && !msg.body.startsWith(`${consts.COMMAND_SYMBOL}`) && Math.random() <= Number(process.env.RANDOMLY_ANSWER_CHANCE)) {
-    msg.body = `!evil ${msg.body}`;
-    gpt(msg);
-    return;
-  }
-
   if (!msg.body.startsWith(`${consts.COMMAND_SYMBOL}`)) return;
 
   //used commands that have parameters
@@ -109,7 +103,7 @@ client.on('message', async (msg: Message) => {
       nomepadrao(msg, consts.DEFAULT_GROUP_TITLE);
       break;
     case `${consts.COMMAND_SYMBOL}all`:
-      all(msg);
+      all(msg, client);
       break;
     case `${consts.COMMAND_SYMBOL}para`:
       para(msg);

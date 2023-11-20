@@ -23,7 +23,7 @@ export const salve = async (msg: Message) => {
         return;
 
       } catch (error) {
-        quotedMsg.reply(`Deu erro: ${error}`, chat.chatId, {
+        quotedMsg.reply(`Deu erro: ${error}, @${contact.id.user}`, chat.chatId, {
           mentions: [contact]
         });
       }
