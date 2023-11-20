@@ -1,4 +1,5 @@
 import { Message } from 'whatsapp-web.js';
+import consts from '../utils/constants'
 const { Configuration, OpenAIApi } = require("openai");
 
 export const gpt = async (msg: Message) => {
@@ -8,17 +9,22 @@ export const gpt = async (msg: Message) => {
 
     const openai = new OpenAIApi(configuration);
 
-    const question = msg.body.split(`!meconta`)[1];
-    const answer = await askQuestion(question, openai);
+    const question:string = msg.body.split(`${consts.COMMAND_SYMBOL}meconta`)[1];
+    const answer:string = await askQuestion(question, openai);
     msg.reply(`${answer}`);
     return;
 }
 
-async function askQuestion(question: string, openai: any) {
-    const completion = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: `${question}`,
-        "max_tokens": 1000
-    });
-    return (completion.data.choices[0].text.trim());
+async function askQuestion(question: string, openai: any): Promise<string> {
+    try {
+        const completion = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: `${question}`,
+            "max_tokens": 1000
+        });
+        return (completion.data.choices[0].text.trim());
+    } catch (error) {
+        return `Erro na API: ${error}`
+    }
+    
 }
