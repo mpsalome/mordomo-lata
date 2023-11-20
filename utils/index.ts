@@ -1,4 +1,4 @@
-import { ChatId, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
+import { ChatId, Client, Contact, GroupParticipant, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
 
 export async function replyQuotedMsg(msg: Message, content: MessageContent, chatId?: ChatId | undefined, options?: MessageSendOptions | undefined) {
     if (msg.hasQuotedMsg) {
@@ -7,4 +7,15 @@ export async function replyQuotedMsg(msg: Message, content: MessageContent, chat
         return;
     }
     msg.reply(content, chatId?._serialized, options)
+}
+
+export async function getContactsFrom(participantArray: GroupParticipant[], client: Client): Promise<Contact[]> {
+    const contactArray: Contact[] = []
+
+    for (const participant of participantArray) {
+        const contact = await client.getContactById(participant.id._serialized);
+        contactArray.push(contact);
+    }
+
+    return contactArray
 }
