@@ -19,13 +19,15 @@
   },
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "google-tts-api": "^2.0.2",
     "jimp": "^0.22.12",
     "openai": "^4.39.0",
     "qrcode-terminal": "^0.12.0",
     "ts-node": "^10.9.2",
-    "whatsapp-web.js": "^1.23.0"
+    "whatsapp-web.js": "^1.23.0",
+    "winston": "^3.13.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.8.0",

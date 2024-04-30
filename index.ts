@@ -38,7 +38,7 @@ client.on('call', async (call: any) => {
 });
 
 client.on('loading_screen', (percent: string, message: string) => {
-  utils.log(`${consts.LOADING_SCREEN} ${percent} ${message}`);
+  utils.log(`${consts.LOADING_SCREEN} ${percent} ${message}`, 'info');
 });
 
 client.on('qr', (qr: string) => {
@@ -46,7 +46,7 @@ client.on('qr', (qr: string) => {
 });
 
 client.on('authenticated', () => {
-  utils.log(consts.AUTHENTICATED);
+  utils.log(consts.AUTHENTICATED, 'info');
 });
 
 client.on('auth_failure', (msg: Message) => {
@@ -54,7 +54,7 @@ client.on('auth_failure', (msg: Message) => {
 });
 
 client.on('ready', () => {
-  utils.log(consts.READY);
+  utils.log(consts.READY, 'info');
 });
 
 client.on('disconnected', (reason: any) => {

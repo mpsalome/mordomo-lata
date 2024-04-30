@@ -1,6 +1,8 @@
 import * as consts from './constants';
 import { ChatId, Client, ClientOptions, Contact, GroupParticipant, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
 import { CommandDefinition } from '../interfaces/CommandDefinition';
+import winston from 'winston';
+import chalk from 'chalk';
 
 export async function replyQuotedMsg(msg: Message, content: MessageContent, chatId?: ChatId | undefined, options?: MessageSendOptions | undefined) {
     if (msg.hasQuotedMsg) {
@@ -36,6 +38,34 @@ export function processCommand(msg:Message, actions:CommandDefinition<Message>[]
   }
 }
 
-export function log(message:string, severity = 'info') {
-  console.log(`[${severity.toUpperCase()}] ${message}`);
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format((info) => {
+      const coloredLevel = getColorizedLevel(info.level);
+      info.level = coloredLevel;
+      return info;
+    })(),
+    winston.format.simple()
+  ),
+  transports: [
+    new winston.transports.Console()
+  ]
+});
+
+function getColorizedLevel(level: string): string {
+  switch (level) {
+    case 'info':
+      return chalk.bgBlueBright(`[${level.toUpperCase()}]`);
+    case 'warn':
+      return chalk.bgYellow(`[${level.toUpperCase()}]`);
+    case 'error':
+      return chalk.bgRed(`[${level.toUpperCase()}]`);
+    default:
+      return chalk.bgWhite(`[${level.toUpperCase()}]`);
+  }
+}
+
+export function log(message: string, level: 'info' | 'warn' | 'error' | 'default'): void {
+  logger.log(level, message);
 }
