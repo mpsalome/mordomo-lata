@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
-    "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "google-tts-api": "^2.0.2",
     "jimp": "^0.22.12",
