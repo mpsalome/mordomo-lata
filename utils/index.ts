@@ -1,5 +1,5 @@
 import * as consts from './constants';
-import { ChatId, Client, ClientOptions, Contact, GroupParticipant, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
+import { ChatId, Client, Contact, GroupParticipant, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
 import { CommandDefinition } from '../interfaces/CommandDefinition';
 import winston from 'winston';
 
