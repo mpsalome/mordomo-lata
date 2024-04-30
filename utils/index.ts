@@ -23,7 +23,7 @@ export async function getContactsFrom(participantArray: GroupParticipant[], clie
       const contact = await client.getContactById(participant.id._serialized);
       contactArray.push(contact);
     } catch (error) {
-      console.error(`Error getting contact for participant ${participant.id._serialized}:`, error);
+      log(`Error getting contact for participant ${participant.id._serialized}`, "error");
     }
   }
 
@@ -37,7 +37,7 @@ export function processCommand(msg: Message, actions: CommandDefinition<Message>
   if (action) {
     action.handler(msg);
   } else {
-    console.log(`Unknown command: ${command}`);
+    log(`Unknown command: ${command}`, "error");
   }
 }
 
