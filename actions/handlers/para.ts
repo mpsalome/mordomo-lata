@@ -4,7 +4,7 @@ const path = require("path");
 const imagePath = path.resolve("./resources/images");
 const fontPath = path.resolve("./resources/fonts");
 
-export const para = async (msg: Message) => {
+export default async (msg: Message) => {
   const chat: any = await msg.getChat();
   if (chat.isGroup) {
     if (msg.hasQuotedMsg) {

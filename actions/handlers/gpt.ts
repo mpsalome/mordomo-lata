@@ -1,8 +1,8 @@
 import { Message } from 'whatsapp-web.js';
-import consts from '../utils/constants'
+import * as consts from '../../utils/constants'
 const { Configuration, OpenAIApi } = require("openai");
 
-export const gpt = async (msg: Message) => {
+export default async (msg: Message) => {
     const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
     });

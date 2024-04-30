@@ -1,7 +1,7 @@
 import { Chat, Message, MessageMedia } from 'whatsapp-web.js';
-import { replyQuotedMsg } from '../utils';
+import { replyQuotedMsg } from '../../utils';
 
-export const sticker = async (msg: Message) => {
+export default async (msg: Message) => {
     const chat: Chat = await msg.getChat();
     let media: MessageMedia = (msg.hasMedia && !msg.hasQuotedMsg) ? await msg.downloadMedia() : {} as MessageMedia
     if (msg.hasQuotedMsg && (await msg.getQuotedMessage()).hasMedia) {

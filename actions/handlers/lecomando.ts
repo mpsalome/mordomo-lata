@@ -1,13 +1,13 @@
 import { Chat, Message, ChatId } from "whatsapp-web.js";
-import { CustomGroupChat } from "../interfaces/CustomGroup";
-import { CustomCommand } from "../interfaces/CustomCommand";
-import consts from '../utils/constants';
+import { CustomGroupChat } from "../../interfaces/CustomGroup";
+import { CustomCommand } from "../../interfaces/CustomCommand";
+import * as consts from '../../utils/constants';
 
 const fs = require("fs");
 const path = require("path");
 
 
-export const lecomando = async (msg: Message) => {
+export default async (msg: Message) => {
 
     const chat: Chat = await msg.getChat();
     const chatId: ChatId = chat.id;

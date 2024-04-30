@@ -4,7 +4,7 @@ const path = require("path");
 const imagePath = path.resolve("./resources/images");
 const fontPath = path.resolve("./resources/fonts");
 
-export const salve = async (msg: Message) => {
+export default async (msg: Message) => {
   const mentioned: Contact[] = await msg.getMentions();
   const chat: any = await msg.getChat();
   if (chat.isGroup) {

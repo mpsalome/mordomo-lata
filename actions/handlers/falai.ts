@@ -1,8 +1,8 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
-import consts from '../utils/constants';
+import * as consts from '../../utils/constants';
 import * as googleTTS from 'google-tts-api';
 
-export const falai = async (msg: Message) => {
+export default async (msg: Message) => {
     let audioUrl: string = ''
 
     if (msg.hasQuotedMsg) {

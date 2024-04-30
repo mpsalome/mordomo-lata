@@ -1,7 +1,7 @@
 import { Chat, Client, Contact, GroupChat, GroupParticipant, Message } from 'whatsapp-web.js';
-import { replyQuotedMsg, getContactsFrom } from '../utils/index'
+import { replyQuotedMsg, getContactsFrom } from '../../utils/index'
 
-export const all = async (msg: Message, client: Client) => {
+export default async (msg: Message, client: Client) => {
   const chat: Chat = await msg.getChat()
   if (chat.isGroup) {
     const group: GroupChat = chat as GroupChat;

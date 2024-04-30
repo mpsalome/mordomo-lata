@@ -1,12 +1,13 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
-import { replyQuotedMsg } from '../utils/index'
-import consts from '../utils/constants';
+import { replyQuotedMsg } from '../../utils/index'
+import * as consts from '../../utils/constants';
 const path = require("path");
 const audioPath = path.resolve("./resources/audios");
 const videoPath = path.resolve("./resources/videos");
 const imagePath = path.resolve("./resources/images");
 
-export const audio = async (msg: Message, requestedAudio: string) => {
+export default async (msg: Message) => {
+  const requestedAudio = msg.body.split(` `)[1];
   if (requestedAudio === "lista") {
     replyQuotedMsg(msg, consts.MIDIAS(consts.ARRAY_AUDIOS, consts.ARRAY_VIDEOS, consts.ARRAY_IMAGENS))
     return;
