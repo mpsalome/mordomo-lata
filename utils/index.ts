@@ -14,7 +14,6 @@ export async function replyQuotedMsg(msg: Message, content: MessageContent, chat
   }
 }
 
-// Improved function with potential error handling using try/catch
 export async function getContactsFrom(participantArray: GroupParticipant[], client: Client): Promise<Contact[]> {
   const contactArray: Contact[] = [];
 
