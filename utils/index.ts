@@ -3,7 +3,6 @@ import { ChatId, Client, ClientOptions, Contact, GroupParticipant, Message, Mess
 import { CommandDefinition } from '../interfaces/CommandDefinition';
 import winston from 'winston';
 const { combine, timestamp, printf, colorize, align } = winston.format;
-import chalk from 'chalk';
 
 export async function replyQuotedMsg(msg: Message, content: MessageContent, chatId?: ChatId | undefined, options?: MessageSendOptions | undefined) {
     if (msg.hasQuotedMsg) {
