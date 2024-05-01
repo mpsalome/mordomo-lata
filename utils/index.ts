@@ -5,7 +5,7 @@ import winston from 'winston';
 
 const { combine, timestamp, printf, colorize, align } = winston.format;
 
-export async function replyQuotedMsg(msg: Message, content: MessageContent, chatId?:ChatId, options?: MessageSendOptions) {
+export async function replyQuotedMsg(msg: Message, content: MessageContent, chatId?: ChatId, options?: MessageSendOptions) {
   if (msg.hasQuotedMsg) {
     const quotedMsg = await msg.getQuotedMessage();
     await quotedMsg.reply(content, chatId?._serialized, options);
@@ -64,4 +64,13 @@ const logger = winston.createLogger({
 
 export function log(message: string, level: 'info' | 'warn' | 'error' | 'default' = 'info'): void {
   logger.log(level, message);
+}
+
+export function handleError(error: unknown): void {
+  if (typeof error === "string") {
+    log(`Error: ${error}`, 'error');
+    error.toUpperCase()
+  } else if (error instanceof Error) {
+    log(`Error: ${error.message}`, 'error');
+  }
 }
