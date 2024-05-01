@@ -1,11 +1,14 @@
-import { GroupChat } from 'whatsapp-web.js';
-
-import { Message } from 'whatsapp-web.js'; 
+import { Message, Chat, GroupChat } from 'whatsapp-web.js';
+import { handleError } from '../../utils/index';
 
 export default async (msg: Message, defaultGroupTitle: string) => {
-    let chat:any = await msg.getChat();
-    if (chat.isGroup) {
-        chat.setSubject(defaultGroupTitle);
+    try {
+        const chat:Chat | undefined = await msg.getChat();
+        if (chat && chat.isGroup) {
+            const group:GroupChat = chat as GroupChat;
+            await group.setSubject(defaultGroupTitle);
+        }
+    } catch (error) {
+        handleError(error);
     }
-    return;
 }
