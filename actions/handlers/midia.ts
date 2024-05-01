@@ -30,11 +30,12 @@ async function handleRequest(requestedMedia: string): Promise<MessageMedia> {
 
   const mediaType = getMediaType(requestedMedia);
   const mediaIndex = getMediaIndex(requestedMedia);
+  const fileExtension = getFileExtension(mediaType);
 
   if (mediaType && mediaIndex !== undefined) {
     const mediaPath = `${mediaPaths[mediaType]}/${consts[`${mediaType}`][mediaIndex]}`;
     try {
-      const media:MessageMedia = await MessageMedia.fromFilePath(`${mediaPath}.mpeg`);
+      const media:MessageMedia = await MessageMedia.fromFilePath(`${mediaPath}.${fileExtension}`);
       return media;
     } catch (error) {
       log(`Error loading ${mediaType} media: ${error}`, 'error');
@@ -63,4 +64,17 @@ function getMediaIndex(requestedMedia: string): number | undefined {
     return consts[`${mediaType}`].indexOf(requestedMedia);
   }
   return undefined;
+}
+
+function getFileExtension(mediaType:'ARRAY_AUDIOS' | 'ARRAY_VIDEOS' | 'ARRAY_IMAGENS' | undefined):string {
+  switch (mediaType) {
+    case 'ARRAY_AUDIOS':
+      return 'mpeg'
+    case 'ARRAY_VIDEOS':
+      return 'mp4'
+    case 'ARRAY_IMAGENS':
+      return 'jpeg'
+    default:
+      return 'mpeg'
+  }
 }
