@@ -1,5 +1,5 @@
 import { Message, MessageMedia, Chat } from 'whatsapp-web.js';
-import { replyQuotedMsg, log } from '../../utils/index';
+import { replyQuotedMsg, handleError } from '../../utils/index';
 const path = require("path");
 
 const audioPath = path.resolve("./resources/audios");
@@ -14,6 +14,6 @@ export default async (msg: Message) => {
     replyQuotedMsg(msg, donkeyImage, chat.id, { sendMediaAsSticker: true });
     replyQuotedMsg(msg, donkeyAudio, chat.id);
   } catch (error) {
-    log(`Error: ${error.message}`, 'error');
-  }
+    handleError(error);
+}
 };

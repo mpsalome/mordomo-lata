@@ -1,7 +1,7 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
 import { COMMAND_SYMBOL } from '../../utils/constants';
 import * as googleTTS from 'google-tts-api';
-import { log } from '../../utils/index';
+import { handleError } from '../../utils/index';
 
 export default async (msg: Message) => {
     try {
@@ -16,7 +16,7 @@ export default async (msg: Message) => {
         }
         await sendAudioMessage(msg, audioUrl);
     } catch (error) {
-        log(`Error: ${error.message}`, 'error');
+        handleError(error);
     }
 };
 
@@ -29,7 +29,7 @@ async function createAudioUrlFrom(text: string): Promise<string> {
         });
         return url;
     } catch (error) {
-        log(`Error creating audio URL: ${error.message}`, 'error');
+        handleError(error);
         throw error;
     }
 }
@@ -39,8 +39,7 @@ async function sendAudioMessage(msg: Message, audioUrl: string): Promise<void> {
         const audioMedia: MessageMedia = await MessageMedia.fromUrl(audioUrl, { unsafeMime: true });
         msg.reply(audioMedia);
     } catch (error) {
-        log(`Error sending audio message: ${error.message}`, 'error');
-        throw error;
+        handleError(error);
     }
     return;
 }
