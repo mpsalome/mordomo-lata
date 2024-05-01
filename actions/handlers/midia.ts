@@ -1,5 +1,5 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
-import { replyQuotedMsg } from '../../utils/index'
+import { handleError, replyQuotedMsg, log } from '../../utils/index';
 import * as consts from '../../utils/constants';
 const path = require("path");
 const audioPath = path.resolve("./resources/audios");
@@ -7,112 +7,60 @@ const videoPath = path.resolve("./resources/videos");
 const imagePath = path.resolve("./resources/images");
 
 export default async (msg: Message) => {
-  const requestedAudio = msg.body.split(` `)[1];
-  if (requestedAudio === "lista") {
-    replyQuotedMsg(msg, consts.MIDIAS(consts.ARRAY_AUDIOS, consts.ARRAY_VIDEOS, consts.ARRAY_IMAGENS))
-    return;
-  }
-  const media = await handleRequest(requestedAudio)
-  media.data ? replyQuotedMsg(msg, media) : msg.reply('Midia não encontrada')
-  return;
+    try {
+        const requestedMedia = msg.body.split(` `)[1];
+        if (requestedMedia === "lista") {
+            const mediaList = consts.MIDIAS(consts.ARRAY_AUDIOS, consts.ARRAY_VIDEOS, consts.ARRAY_IMAGENS);
+            replyQuotedMsg(msg, mediaList);
+            return;
+        }
+        const media = await handleRequest(requestedMedia);
+        media.data ? replyQuotedMsg(msg, media, undefined, { sendMediaAsDocument: false }) : msg.reply('Midia não encontrada');
+    } catch (error) {
+      handleError(error);
+    }
 };
 
-async function handleRequest(requestedAudio: string): Promise<MessageMedia> {
-  let media: MessageMedia = {} as MessageMedia;
-  switch (requestedAudio) {
-    case consts.ARRAY_AUDIOS[0]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[0]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[1]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[1]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[2]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[2]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[3]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[3]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[4]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[4]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[5]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[5]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[6]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[6]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[7]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[7]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[8]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[8]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[9]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[9]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[10]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[10]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[11]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[11]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[12]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[12]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[13]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[13]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[14]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[14]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[15]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[15]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[16]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[16]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[17]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[17]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[18]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[18]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[19]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[19]}.mpeg`)
-      break;
-    case consts.ARRAY_AUDIOS[20]:
-      media = await MessageMedia.fromFilePath(`${audioPath}/${consts.ARRAY_AUDIOS[20]}.mpeg`)
-      break;
-    case consts.ARRAY_VIDEOS[0]:
-      media = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_VIDEOS[0]}.mp4`)
-      break;
-    case consts.ARRAY_VIDEOS[1]:
-      media = await MessageMedia.fromFilePath(`${videoPath}/${consts.ARRAY_VIDEOS[1]}.mp4`)
-      break;
-    case consts.ARRAY_IMAGENS[0]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[0]}.jpeg`)
-      break;
-    case consts.ARRAY_IMAGENS[1]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[1]}.jpeg`)
-      break;
-    case consts.ARRAY_IMAGENS[2]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[2]}.jpeg`)
-      break;
-    case consts.ARRAY_IMAGENS[3]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[3]}.jpeg`)
-      break;
-    case consts.ARRAY_IMAGENS[4]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[4]}.jpeg`)
-      break;
-    case consts.ARRAY_IMAGENS[5]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[5]}.jpeg`)
-      break;
-    case consts.ARRAY_IMAGENS[6]:
-      media = await MessageMedia.fromFilePath(`${imagePath}/${consts.ARRAY_IMAGENS[6]}.jpeg`)
-      break;
-    default:
-      media.data = '';
-      break;
+async function handleRequest(requestedMedia: string): Promise<MessageMedia> {
+  const mediaPaths: { [key: string]: string } = {
+    ARRAY_AUDIOS: audioPath,
+    ARRAY_VIDEOS: videoPath,
+    ARRAY_IMAGENS: imagePath
+  };
+
+  const mediaType = getMediaType(requestedMedia);
+  const mediaIndex = getMediaIndex(requestedMedia);
+
+  if (mediaType && mediaIndex !== undefined) {
+    const mediaPath = `${mediaPaths[mediaType]}/${consts[`${mediaType}`][mediaIndex]}`;
+    try {
+      const media:MessageMedia = await MessageMedia.fromFilePath(`${mediaPath}.mpeg`);
+      return media;
+    } catch (error) {
+      log(`Error loading ${mediaType} media: ${error}`, 'error');
+      throw error;
+    }
+  } else {
+    log(`Invalid media type: ${requestedMedia}`, 'warn');
+    throw new Error("undefined");
   }
-  return media
+}
+
+function getMediaType(requestedMedia: string): 'ARRAY_AUDIOS' | 'ARRAY_VIDEOS' | 'ARRAY_IMAGENS' | undefined {
+  if (consts.ARRAY_AUDIOS.includes(requestedMedia)) {
+    return 'ARRAY_AUDIOS';
+  } else if (consts.ARRAY_VIDEOS.includes(requestedMedia)) {
+    return 'ARRAY_VIDEOS';
+  } else if (consts.ARRAY_IMAGENS.includes(requestedMedia)) {
+    return 'ARRAY_IMAGENS';
+  }
+  return undefined;
+}
+
+function getMediaIndex(requestedMedia: string): number | undefined {
+  const mediaType = getMediaType(requestedMedia);
+  if (mediaType) {
+    return consts[`${mediaType}`].indexOf(requestedMedia);
+  }
+  return undefined;
 }
