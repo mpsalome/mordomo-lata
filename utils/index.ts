@@ -6,11 +6,15 @@ import winston from 'winston';
 const { combine, timestamp, printf, colorize, align } = winston.format;
 
 export async function replyQuotedMsg(msg: Message, content: MessageContent, chatId?: ChatId, options?: MessageSendOptions) {
-  if (msg.hasQuotedMsg) {
-    const quotedMsg = await msg.getQuotedMessage();
-    await quotedMsg.reply(content, chatId?._serialized, options);
-  } else {
-    await msg.reply(content, chatId?._serialized, options);
+  try {
+    if (msg.hasQuotedMsg) {
+      const quotedMsg = await msg.getQuotedMessage();
+      await quotedMsg.reply(content, chatId?._serialized, options);
+    } else {
+      await msg.reply(content, chatId?._serialized, options);
+    }
+  } catch (error) {
+    handleError(error);
   }
 }
 
