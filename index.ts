@@ -2,7 +2,7 @@ const qrcode = require('qrcode-terminal');
 import { Client, ClientOptions, Message } from 'whatsapp-web.js';
 import dotenv from 'dotenv';
 import * as utils from './utils/index';
-import * as consts from './utils/constants';
+import {REJECT_CALLS, LOADING_SCREEN, AUTHENTICATED, AUTH_FAILURE, READY, DISCONNECTED, COMMAND_SYMBOL, DEFAULT_GROUP_TITLE} from './utils/constants';
 import * as actions from './actions';
 
 dotenv.config();
@@ -30,15 +30,15 @@ const client = new Client(clientConfig);
 client.initialize();
 
 client.on('call', async (call: any) => {
-  if (consts.REJECT_CALLS) await call.reject();
+  if (REJECT_CALLS) await call.reject();
   await client.sendMessage(
     call.from,
-    `[${call.fromMe ? 'Outgoing' : 'Incoming'}] Phone call from ${call.from}, type ${call.isGroup ? 'group' : ''} ${call.isVideo ? 'video' : 'audio'} call. ${consts.REJECT_CALLS ? 'This call was automatically rejected by the script.' : ''}`
+    `[${call.fromMe ? 'Outgoing' : 'Incoming'}] Phone call from ${call.from}, type ${call.isGroup ? 'group' : ''} ${call.isVideo ? 'video' : 'audio'} call. ${REJECT_CALLS ? 'This call was automatically rejected by the script.' : ''}`
   );
 });
 
 client.on('loading_screen', (percent: string, message: string) => {
-  utils.log(`${consts.LOADING_SCREEN} ${percent} ${message}`, 'info');
+  utils.log(`${LOADING_SCREEN} ${percent} ${message}`, 'info');
 });
 
 client.on('qr', (qr: string) => {
@@ -46,23 +46,23 @@ client.on('qr', (qr: string) => {
 });
 
 client.on('authenticated', () => {
-  utils.log(consts.AUTHENTICATED, 'info');
+  utils.log(AUTHENTICATED, 'info');
 });
 
 client.on('auth_failure', (msg: Message) => {
-  utils.log(consts.AUTH_FAILURE, 'error');
+  utils.log(AUTH_FAILURE, 'error');
 });
 
 client.on('ready', () => {
-  utils.log(consts.READY, 'info');
+  utils.log(READY, 'info');
 });
 
 client.on('disconnected', (reason: any) => {
-  utils.log(`${consts.DISCONNECTED} ${reason}`, 'error');
+  utils.log(`${DISCONNECTED} ${reason}`, 'error');
 });
 
 client.on('message', async (msg: Message) => {
-  if (!msg.body.startsWith(consts.COMMAND_SYMBOL)) return;
+  if (!msg.body.startsWith(COMMAND_SYMBOL)) return;
   utils.processCommand(msg, [
     { command: 'midia', handler: actions.audioHandler },
     { command: 'salve', handler: actions.salveHandler },
@@ -71,7 +71,7 @@ client.on('message', async (msg: Message) => {
     { command: 'criacomando', handler: actions.criacomandoHandler },
     { command: 'atualizacomando', handler: actions.atualizacomandoHandler },
     { command: 'teste', handler: actions.testeHandler },
-    { command: 'nomepadrao', handler: (msg:Message) => actions.nomepadraoHandler(msg, consts.DEFAULT_GROUP_TITLE) },
+    { command: 'nomepadrao', handler: (msg:Message) => actions.nomepadraoHandler(msg, DEFAULT_GROUP_TITLE) },
     { command: 'all', handler: (msg:Message) => actions.allHandler(msg, client) },
     { command: 'para', handler: actions.paraHandler },
     { command: 'comandos', handler: actions.comandosHandler },

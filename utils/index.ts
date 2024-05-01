@@ -1,4 +1,4 @@
-import * as consts from './constants';
+import { COMMAND_SYMBOL } from '../utils/constants';
 import { ChatId, Client, Contact, GroupParticipant, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
 import { CommandDefinition } from '../interfaces/CommandDefinition';
 import winston from 'winston';
@@ -30,8 +30,8 @@ export async function getContactsFrom(participantArray: GroupParticipant[], clie
 }
 
 export function processCommand(msg: Message, actions: CommandDefinition<Message>[]) {
-  const command = msg.body?.split(' ')[0]?.substring(consts.COMMAND_SYMBOL.length);
-  const action = actions.find(action => msg.body?.startsWith(`${consts.COMMAND_SYMBOL}${action.command}`));
+  const command = msg.body?.split(' ')[0]?.substring(COMMAND_SYMBOL.length);
+  const action = actions.find(action => msg.body?.startsWith(`${COMMAND_SYMBOL}${action.command}`));
 
   if (action) {
     action.handler(msg);
