@@ -1,7 +1,10 @@
 import { Message } from 'whatsapp-web.js';
-import { replyQuotedMsg } from '../../utils/index'
+import { replyQuotedMsg, handleError } from '../../utils/index';
 
-export default (msg: Message) => {
-    replyQuotedMsg(msg, 'testado');
-    return;
+export default function processMessage(msg: Message): void {
+    try {
+        replyQuotedMsg(msg, 'testado');
+    } catch (error) {
+        handleError(error);
+    }
 }
