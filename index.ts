@@ -66,7 +66,7 @@ client.on('message', async (msg: Message) => {
   utils.processCommand(msg, [
     { command: 'midia', handler: actions.audioHandler },
     { command: 'salve', handler: actions.salveHandler },
-    { command: 'meconta|dan|stan|dude|mongo|evil', handler: actions.gptHandler },
+    { command: 'meconta', handler: actions.gptHandler },
     { command: 'falai', handler: actions.falaiHandler },
     { command: 'criacomando', handler: actions.criacomandoHandler },
     { command: 'atualizacomando', handler: actions.atualizacomandoHandler },
