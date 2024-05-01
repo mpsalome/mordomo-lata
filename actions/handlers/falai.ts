@@ -1,7 +1,7 @@
 import { Message, MessageMedia } from 'whatsapp-web.js';
-import * as consts from '../../utils/constants';
+import { COMMAND_SYMBOL } from '../../utils/constants';
 import * as googleTTS from 'google-tts-api';
-import { replyQuotedMsg, log } from '../../utils/index';
+import { log } from '../../utils/index';
 
 export default async (msg: Message) => {
     try {
@@ -11,7 +11,7 @@ export default async (msg: Message) => {
             const text: string = quotedMsg.body;
             audioUrl = await createAudioUrlFrom(text);
         } else {
-            const text = msg.body.split(`${consts.COMMAND_SYMBOL}falai`)[1];
+            const text = msg.body.split(`${COMMAND_SYMBOL}falai`)[1];
             audioUrl = await createAudioUrlFrom(text);
         }
         await sendAudioMessage(msg, audioUrl);
