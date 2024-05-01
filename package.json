@@ -19,22 +19,24 @@
   },
   "homepage": "https://github.com/mpsalome/mordomo-lata#readme",
   "dependencies": {
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.4.5",
     "google-tts-api": "^2.0.2",
-    "jimp": "^0.16.2",
-    "openai": "^3.1.0",
+    "jimp": "^0.22.12",
+    "openai": "^4.39.0",
     "qrcode-terminal": "^0.12.0",
-    "ts-node": "^10.9.1",
-    "whatsapp-web.js": "^1.23.0"
+    "ts-node": "^10.9.2",
+    "whatsapp-web.js": "^1.23.0",
+    "winston": "^3.13.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
-    "eslint": "^8.32.0",
-    "eslint-config-standard-with-typescript": "^24.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "eslint": "^9.1.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^17.3.1",
     "eslint-plugin-promise": "^6.1.1",
-    "typescript": "^4.9.4"
+    "typescript": "^5.4.5"
   },
-  "type": "module node --experimental-specifier-resolution=node --loader ts-node/esm ./index.ts"
+  "type": "module node --experimental-specifier-resolution=node --loader ts-node/esm ./index.ts",
+  "packageManager": "yarn@3.6.2"
 }
