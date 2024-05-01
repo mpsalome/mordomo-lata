@@ -132,3 +132,6 @@ dist
 
 # whatsapp web cache
 .wwebjs_cache/
+
+#not needed resource
+./resources/images/salve_sticker.png
