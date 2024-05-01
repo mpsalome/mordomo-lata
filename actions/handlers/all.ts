@@ -1,6 +1,6 @@
 import { Chat, Client, Contact, GroupChat, GroupParticipant, Message } from 'whatsapp-web.js';
 import { replyQuotedMsg, getContactsFrom } from '../../utils/index';
-import { log } from '../../utils/';
+import { log, handleError } from '../../utils/';
 
 export default async (msg: Message, client: Client) => {
   try {
@@ -16,10 +16,10 @@ export default async (msg: Message, client: Client) => {
         text += `@${contact.id.user} `;
       });
 
-      log(`Sending message in group: ${group.id} - mentions ${ mentions }` , 'info');
+      log(`Sending message in group: ${group.name} - mentions ${ JSON.stringify(mentions) }` , 'info');
       await replyQuotedMsg(msg, text.trim(), group.id, { mentions });
     }
   } catch (error) {
-    log('Error processing message:', 'error');
+    handleError(error);
   }
 };
