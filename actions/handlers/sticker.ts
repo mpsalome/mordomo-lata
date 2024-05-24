@@ -13,7 +13,11 @@ export default async function processMessage(msg: Message): Promise<void> {
             media = await quotedMsg.downloadMedia();
         }
 
-        await replyQuotedMsg(msg, media, chat.id, { sendMediaAsSticker: true });
+        await replyQuotedMsg(msg, media, chat.id, { 
+            sendMediaAsSticker: true,
+            stickerAuthor: "É Mordomo ntc 😎",
+            stickerName: "Pão em Lata™️ 🍞🛢️"
+        });
     } catch (error) {
         handleError(error);
     }
